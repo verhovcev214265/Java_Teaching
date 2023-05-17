@@ -39,9 +39,5 @@ public class AddressTest {
         Assert.assertEquals(house, myAddress.getHouse());
         Assert.assertEquals(apartment, myAddress.getApartment());
 
-
-
-//        System.out.println(myAddress.getIndex() + "\n" + myAddress.getCountry() + "\n" + myAddress.getCity() + "\n" +
-//                myAddress.getHouse() + "\n" + myAddress.getApartment());
     }
 }
