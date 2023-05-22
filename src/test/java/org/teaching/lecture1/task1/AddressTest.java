@@ -1,4 +1,4 @@
-package org.teaching.lecture1;
+package org.teaching.lecture1.task1;
 
 import org.junit.Assert;
 import org.junit.Ignore;

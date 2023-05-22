@@ -1,4 +1,4 @@
-package org.teaching.lecture1;
+package org.teaching.lecture1.task1;
 
 /*
 Требуется: Создать класс с именем Address. В теле класса требуется создать поля: index, country, city,
