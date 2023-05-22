@@ -2,8 +2,9 @@ package org.teaching.lecture1.additional;
 
 public class TrafficLights {
 
-    public static String updateLight(String current){
-        switch (current){
+    public static String updateLight(String color){
+
+        switch (color){
             case "green" :
                 return "yellow";
             case "yellow":
@@ -11,7 +12,7 @@ public class TrafficLights {
             case "red":
                 return "green";
             default:
-                return "You enter incorrect word!";
+                return "You enter incorrect color!";
         }
     }
 }

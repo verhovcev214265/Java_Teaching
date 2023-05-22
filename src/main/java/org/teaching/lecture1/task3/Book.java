@@ -8,7 +8,7 @@ public class Book {
         this.name = name;
     }
 
-    public String show(){
-        return this.name;
+    public void show() {
+        System.out.println(name);
     }
 }

@@ -2,20 +2,19 @@ package org.teaching.lecture1.task3;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class AuthorTest {
 
-    private static Author author;
+    private Author author;
 
-    @BeforeClass
-    public static void setUp(){
+    @Before
+    public void setUp(){
         author = new Author();
     }
 
-    @Before
-    public void checkNull(){
+    @Test
+    public void checkNotNull(){
         Assert.assertNotNull(author);
     }
 
@@ -24,7 +23,6 @@ public class AuthorTest {
         String authorName = "Bruce Eckel";
         author.setName(authorName);
 
-        Assert.assertEquals(authorName, author.show());
-
+        author.show();
     }
 }
