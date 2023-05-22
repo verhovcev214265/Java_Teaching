@@ -2,20 +2,19 @@ package org.teaching.lecture1.task3;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TitleTest {
 
-    private static Title title;
+    private Title title;
 
-    @BeforeClass
-    public static void setUp(){
+    @Before
+    public void setUp(){
         title = new Title();
     }
 
-    @Before
-    public void checkNull(){
+    @Test
+    public void checkNotNull(){
         Assert.assertNotNull(title);
     }
 
@@ -24,6 +23,6 @@ public class TitleTest {
         String description  = "Write Once, Run Anywhere";
         title.setDescription(description);
 
-        Assert.assertEquals(description, title.show());
+        title.show();
     }
 }

@@ -8,7 +8,7 @@ public class Title {
         this.description = description;
     }
 
-    public String show(){
-        return this.description;
+    public void show() {
+        System.out.println(description);
     }
 }

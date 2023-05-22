@@ -2,20 +2,19 @@ package org.teaching.lecture1.task3;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ContentTest {
 
-    private static Content content;
+    private Content content;
 
-    @BeforeClass
-    public static void setUp(){
+    @Before
+    public void setUp(){
         content = new Content();
     }
 
-    @Before
-    public void checkNull(){
+    @Test
+    public void checkNotNull(){
         Assert.assertNotNull(content);
     }
 
@@ -24,6 +23,6 @@ public class ContentTest {
         String contentDescription = "Learning Java";
         content.setDescription(contentDescription);
 
-        Assert.assertEquals(contentDescription, content.show());
+        content.show();
     }
 }

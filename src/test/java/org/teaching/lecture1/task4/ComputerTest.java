@@ -1,15 +1,15 @@
 package org.teaching.lecture1.task4;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ComputerTest {
 
-    private static Computer[] computers;
+    private Computer[] computers;
 
-    @BeforeClass
-    public static void setUp() {
+    @Before
+    public void setUp() {
         computers = new Computer[5];
 
         for (int i = 0; i < computers.length; i++) {
@@ -18,30 +18,26 @@ public class ComputerTest {
     }
 
     @Test
-    public void checkNull() {
-        for (Computer tmp : computers){
-            Assert.assertNotNull(tmp);
+    public void checkNotNull() {
+        Assert.assertNotNull(computers);
+        Assert.assertEquals(5, computers.length);
+
+        for (Computer computer : computers){
+            Assert.assertNotNull(computer);
         }
     }
 
-    @Test
-    public void shouldReturnCorrectSize(){
-        int expected = 5;
-        int actual = computers.length;
-
-        Assert.assertEquals(expected, actual);
-    }
 
     @Test
     public void shouldReturnCorrectModel(){
         String[] models = {"Dell", "Samsung", "Apple", "Acer", "Asus"};
 
         for (int i = 0; i < computers.length; i++) {
-            computers[i].setModel(models[i]);
+            computers[i].setName(models[i]);
         }
 
         for (int i = 0; i < computers.length; i++) {
-            Assert.assertEquals(models[i], computers[i].getModel());
+            Assert.assertEquals(models[i], computers[i].getName());
         }
     }
 }
