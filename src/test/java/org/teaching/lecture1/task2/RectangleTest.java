@@ -17,7 +17,7 @@ public class RectangleTest {
     }
 
     @Test
-    public void checkNotNull_test(){
+    public void checkNotNull(){
         Assert.assertNotNull(rectangle);
     }
 
