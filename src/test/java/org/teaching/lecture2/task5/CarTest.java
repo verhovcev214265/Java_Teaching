@@ -1,30 +1,23 @@
 package org.teaching.lecture2.task5;
 
-/*
-(Заново!) Создать класс Машина с полями год(int), скорость(double), вес(int) цвет(String).
-Создать конструктор по умолчанию, конструктор с 1-м параметром, 2-я, 3-я, 4-я.
-Перегрузить конструкторы вызывая конструктор из конструктора.
-Создать класс Main, в котором создать экземляры класса Машина с разными параметрами.
- */
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
+import org.teaching.lecture2.task4.Car;
 
 public class CarTest {
-    private Car carA;
-    private Car carB;
-    private Car carC;
-    private Car carD;
-    private Car carE;
+    private org.teaching.lecture2.task4.Car carA;
+    private org.teaching.lecture2.task4.Car carB;
+    private org.teaching.lecture2.task4.Car carC;
+    private org.teaching.lecture2.task4.Car carD;
+    private org.teaching.lecture2.task4.Car carE;
 
     @Before
     public void setUp(){
-        carA = new Car();
-        carB = new Car(2005);
-        carC = new Car(2006, 220.0);
-        carD = new Car(2007, 230.0, 1000);
+        carA = new org.teaching.lecture2.task4.Car();
+        carB = new org.teaching.lecture2.task4.Car(2005);
+        carC = new org.teaching.lecture2.task4.Car(2006, 220.0);
+        carD = new org.teaching.lecture2.task4.Car(2007, 230.0, 1000);
         carE = new Car(2008, 240.0, 1100, "Blue");
     }
 
@@ -38,10 +31,21 @@ public class CarTest {
     }
 
     @Test
+    public void checkDefaultConstructor(){
+        Assert.assertEquals(0, carA.getYearProduction());
+        Assert.assertEquals(0.0, carA.getSpeed(), 0.001);
+        Assert.assertEquals(0, carA.getWeight());
+        Assert.assertNull(carA.getColor());
+    }
+
+    @Test
     public void checkConstructor_WithOnesParameter(){
         int expected = 2005;
 
         Assert.assertEquals(expected, carB.getYearProduction());
+        Assert.assertEquals(0.0, carB.getSpeed(), 0.001);
+        Assert.assertEquals(0, carB.getWeight());
+        Assert.assertNull(carB.getColor());
     }
 
     @Test
@@ -51,6 +55,8 @@ public class CarTest {
 
         Assert.assertEquals(expectedYear, carC.getYearProduction());
         Assert.assertEquals(expectedSpeed, carC.getSpeed(), 0.001);
+        Assert.assertEquals(0, carC.getWeight());
+        Assert.assertNull(carC.getColor());
     }
 
     @Test
@@ -62,6 +68,7 @@ public class CarTest {
         Assert.assertEquals(expectedYear, carD.getYearProduction());
         Assert.assertEquals(expectedSpeed, carD.getSpeed(), 0.001);
         Assert.assertEquals(expectedWeight, carD.getWeight());
+        Assert.assertNull(carD.getColor());
     }
 
     @Test

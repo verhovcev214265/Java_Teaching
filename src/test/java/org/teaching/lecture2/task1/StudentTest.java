@@ -34,8 +34,16 @@ public class StudentTest {
     }
 
     @Test
-    public void check_SeparateFields_Accessories(){
+    public void checkDefaultConstructor(){
+        Assert.assertNull(studentA.getName());
+        Assert.assertNull(studentA.getSureName());
+        Assert.assertEquals(0, studentA.getDataOfBirth());
+        Assert.assertEquals(0, studentA.getPhoneNumber());
+        Assert.assertEquals(0, studentA.getNumberOfGroup());
+    }
 
+    @Test
+    public void check_SeparateFields_Accessories(){
         studentA.setName(name);
         studentA.setSureName(sureName);
         studentA.setDataOfBirth(dataOfBirth);
@@ -60,14 +68,17 @@ public class StudentTest {
     }
 
     @Test
-    public void checkCount(){
-        Student studentB = new Student();
-        Student studentC = new Student();
-        Student studentD = new Student();
+    public void checkCount() {
 
-        Assert.assertEquals(Student.count, studentA.getCount());
-        Assert.assertEquals(Student.count, studentB.getCount());
-        Assert.assertEquals(Student.count, studentC.getCount());
-        Assert.assertEquals(Student.count, studentD.getCount());
+        Assert.assertEquals(1, Student.getCount());
+
+        new Student();
+        Assert.assertEquals(2, Student.getCount());
+
+        new Student();
+        Assert.assertEquals(3, Student.getCount());
+
+        new Student();
+        Assert.assertEquals(4, Student.getCount());
     }
 }

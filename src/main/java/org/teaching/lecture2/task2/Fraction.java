@@ -11,31 +11,57 @@ public class Fraction {
     private double numerator;
     private double denominator;
 
-    public Fraction(){}
+    public Fraction() {
+    }
 
     public Fraction(double numerator, double denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
     }
 
-    public double add(Fraction fraction){
-        return fraction.getNumerator() + fraction.getDenominator();
+    public static Fraction add(Fraction fractionA, Fraction fractionB) {
+
+        return new Fraction(
+                fractionA.getNumerator() + fractionB.getNumerator(),
+                fractionA.getDenominator() + fractionB.getDenominator()
+        );
     }
 
-    public double sub(Fraction fraction){
-        return fraction.getNumerator() - fraction.getDenominator();
+//    public void addNonStatic(Fraction fractionA, Fraction fractionB){
+//        this.numerator = fractionA.getNumerator() + fractionB.getNumerator();
+//        this.denominator = fractionB.getDenominator() + fractionB.getDenominator();
+//    }
+//
+//    public Fraction addNonStatic2(Fraction fractionA, Fraction fractionB){
+//        this.numerator = fractionA.getNumerator() + fractionB.getNumerator();
+//        this.denominator = fractionA.getDenominator() + fractionB.getDenominator();
+//
+//        return this;
+//    }
+
+    public static Fraction sub(Fraction fractionA, Fraction fractionB) {
+        return new Fraction(
+                fractionA.getNumerator() - fractionB.getNumerator(),
+                fractionA.getDenominator() - fractionB.getDenominator()
+        );
     }
 
-    public double mul(Fraction fraction){
-        return fraction.getNumerator() * fraction.getDenominator();
+    public static Fraction mul(Fraction fractionA, Fraction fractionB) {
+        return new Fraction(
+                fractionA.getNumerator() * fractionB.getNumerator(),
+                fractionA.getDenominator() * fractionB.getDenominator()
+        );
     }
 
-    public double div(Fraction fraction){
-        if (fraction.getDenominator() == 0){
-            return -999.999;
-        }else {
-            return (fraction.getNumerator() / fraction.getDenominator());
+    public Fraction div(Fraction fractionA, Fraction fractionB) {
+        if (fractionB.getNumerator() == 0 || fractionB.getDenominator() == 0) {
+            this.numerator = 0;
+            this.denominator = 0;
+        } else {
+            this.numerator = fractionA.getNumerator() / fractionB.getNumerator();
+            this.denominator = fractionA.getDenominator() / fractionB.getDenominator();
         }
+        return this;
     }
 
     public double getNumerator() {

@@ -31,10 +31,17 @@ public class CarTest {
     }
 
     @Test
+    public void checkDefaultConstructor(){
+        Assert.assertEquals(0, carA.getYearProduction());
+        Assert.assertNull(carA.getColor());
+    }
+
+    @Test
     public void checkConstructor_WithOneParameter(){
         int expected = 2005;
 
         Assert.assertEquals(expected, carB.getYearProduction());
+        Assert.assertNull(carB.getColor());
     }
 
     @Test

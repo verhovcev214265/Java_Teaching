@@ -38,10 +38,21 @@ public class CarTest {
     }
 
     @Test
+    public void checkDefaultConstructor(){
+        Assert.assertEquals(0, carA.getYearProduction());
+        Assert.assertEquals(0.0, carA.getSpeed(), 0.001);
+        Assert.assertEquals(0, carA.getWeight());
+        Assert.assertNull(carA.getColor());
+    }
+
+    @Test
     public void checkConstructor_WithOnesParameter(){
         int expected = 2005;
 
         Assert.assertEquals(expected, carB.getYearProduction());
+        Assert.assertEquals(0.0, carB.getSpeed(), 0.001);
+        Assert.assertEquals(0, carB.getWeight());
+        Assert.assertNull(carB.getColor());
     }
 
     @Test
@@ -51,6 +62,8 @@ public class CarTest {
 
         Assert.assertEquals(expectedYear, carC.getYearProduction());
         Assert.assertEquals(expectedSpeed, carC.getSpeed(), 0.001);
+        Assert.assertEquals(0, carC.getWeight());
+        Assert.assertNull(carC.getColor());
     }
 
     @Test
@@ -62,6 +75,7 @@ public class CarTest {
         Assert.assertEquals(expectedYear, carD.getYearProduction());
         Assert.assertEquals(expectedSpeed, carD.getSpeed(), 0.001);
         Assert.assertEquals(expectedWeight, carD.getWeight());
+        Assert.assertNull(carD.getColor());
     }
 
     @Test

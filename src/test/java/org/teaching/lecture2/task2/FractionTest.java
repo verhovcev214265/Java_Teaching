@@ -14,13 +14,17 @@ public class FractionTest {
 
     private Fraction fractionA;
     private Fraction fractionB;
+
     double numerator = 10.5;
     double denominator = 2.5;
 
     @Before
     public void setUp(){
         fractionA = new Fraction(numerator, denominator);
+
         fractionB = new Fraction();
+        fractionB.setNumerator(numerator);
+        fractionB.setDenominator(denominator);
     }
 
     @Test
@@ -37,30 +41,56 @@ public class FractionTest {
 
     @Test
     public void check_SeparateFields_Accessories(){
-        fractionB.setNumerator(numerator);
-        fractionB.setDenominator(denominator);
-
         Assert.assertEquals(numerator, fractionB.getNumerator(), 0.0001);
         Assert.assertEquals(denominator, fractionB.getDenominator(), 0.0001);
     }
 
     @Test
     public void add_test(){
-        Assert.assertEquals(13.0, fractionA.add(fractionA), 0.0001);
+        Fraction result = Fraction.add(fractionA, fractionB);
+
+        Assert.assertEquals(21.0, result.getNumerator(), 0.001);
+        Assert.assertEquals(5.0, result.getDenominator(), 0.001);
     }
+
+//    @Test
+//    public void add2_test(){
+//        Fraction result = new Fraction();
+//        result.addNonStatic(fractionA, fractionB);
+//
+//        Assert.assertEquals(21.0, result.getNumerator(), 0.001);
+//        Assert.assertEquals(5.0, result.getDenominator(), 0.001);
+//    }
+//
+//    @Test
+//    public void add3_test(){
+//        Fraction result = new Fraction().addNonStatic2(fractionA, fractionB);
+//
+//        Assert.assertEquals(21.0, result.getNumerator(), 0.001);
+//        Assert.assertEquals(5.0, result.getDenominator(), 0.001);
+//    }
 
     @Test
     public void sub_test(){
-        Assert.assertEquals(8.0, fractionA.sub(fractionA), 0.0001);
+        Fraction result = Fraction.sub(fractionA, fractionB);
+
+        Assert.assertEquals(0.0, result.getNumerator(), 0.001);
+        Assert.assertEquals(0.0, result.getDenominator(), 0.001);
     }
 
     @Test
     public void mul_test(){
-        Assert.assertEquals(26.25, fractionA.mul(fractionA), 0.0001);
+        Fraction result = Fraction.mul(fractionA, fractionB);
+
+        Assert.assertEquals(110.25, result.getNumerator(),0.001);
+        Assert.assertEquals(6.25, result.getDenominator(),0.001);
     }
 
     @Test
     public void div_test(){
-        Assert.assertEquals(4.2, fractionA.div(fractionA), 0.0001);
+        Fraction result = new Fraction().div(fractionA, fractionB);
+
+        Assert.assertEquals(1.0, result.getNumerator(), 0.001);
+        Assert.assertEquals(1.0, result.getDenominator(), 0.001);
     }
 }

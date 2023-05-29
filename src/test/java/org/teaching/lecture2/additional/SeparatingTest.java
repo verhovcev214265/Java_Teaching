@@ -40,16 +40,8 @@ public class SeparatingTest {
 
     @Test
     public void shouldReturn_splitElements(){
-        String inputA = "abcd";
-        String inputB = "RqaEzty";
-        String inputC = "cwAt";
-
-        String expectedA = "A-Bb-Ccc-Dddd";
-        String expectedB = "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy";
-        String expectedC = "C-Ww-Aaa-Tttt";
-
-        Assert.assertEquals(expectedA, separating.splitting(inputA));
-        Assert.assertEquals(expectedB, separating.splitting(inputB));
-        Assert.assertEquals(expectedC, separating.splitting(inputC));
+        Assert.assertEquals("A-Bb-Ccc-Dddd", separating.splitting("abcd"));
+        Assert.assertEquals("R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy", separating.splitting("RqaEzty"));
+        Assert.assertEquals("C-Ww-Aaa-Tttt", separating.splitting("cwAt"));
     }
 }

@@ -14,7 +14,7 @@ public class Student {
     private long phoneNumber;
     private int numberOfGroup;
 
-    protected static int count;
+    private static int count;
 
     public Student(){
         count++;
@@ -68,7 +68,7 @@ public class Student {
         this.numberOfGroup = numberOfGroup;
     }
 
-    public int getCount(){
+    public static int getCount(){
         return count;
     }
 }
