@@ -3,21 +3,20 @@ package org.teaching.lecture2.task5;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.teaching.lecture2.task4.Car;
 
 public class CarTest {
-    private org.teaching.lecture2.task4.Car carA;
-    private org.teaching.lecture2.task4.Car carB;
-    private org.teaching.lecture2.task4.Car carC;
-    private org.teaching.lecture2.task4.Car carD;
-    private org.teaching.lecture2.task4.Car carE;
+    private Car carA;
+    private Car carB;
+    private Car carC;
+    private Car carD;
+    private Car carE;
 
     @Before
     public void setUp(){
-        carA = new org.teaching.lecture2.task4.Car();
-        carB = new org.teaching.lecture2.task4.Car(2005);
-        carC = new org.teaching.lecture2.task4.Car(2006, 220.0);
-        carD = new org.teaching.lecture2.task4.Car(2007, 230.0, 1000);
+        carA = new Car();
+        carB = new Car(2005);
+        carC = new Car(2006, 220.0);
+        carD = new Car(2007, 230.0, 1000);
         carE = new Car(2008, 240.0, 1100, "Blue");
     }
 
