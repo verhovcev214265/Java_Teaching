@@ -1,5 +1,7 @@
 package org.teaching.lecture3.itvdn_tasks.task3;
 
+// Для класса Plane должна быть определена высота и количество пассажиров.
+
 public class Plane extends Vehicle{
 
     private final double height;

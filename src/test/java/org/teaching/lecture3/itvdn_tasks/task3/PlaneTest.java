@@ -23,4 +23,10 @@ public class PlaneTest {
         Assert.assertEquals(4500,plane.getHeight(), 0.0001);
         Assert.assertEquals(358, plane.getPassengers());
     }
+
+    @Test
+    public void checkInheritance(){
+        Assert.assertNotNull(plane);
+        Assert.assertTrue(plane instanceof Vehicle);
+    }
 }

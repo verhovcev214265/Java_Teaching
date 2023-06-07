@@ -13,7 +13,7 @@ public class XeroxTest {
     @Before
     public void setUp(){
         printer = new Xerox();
-        xerox = new Xerox();
+        xerox = (Xerox) printer;
     }
 
     @Test

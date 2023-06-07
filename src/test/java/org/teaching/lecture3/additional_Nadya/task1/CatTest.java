@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class CatTest {
 
-    private Cat cat;
+    private Pet cat;
 
     @Before
     public void setUp(){

@@ -11,13 +11,4 @@ public class Dog extends Pet{
         return "Gav - gav";
     }
 
-    @Override
-    public String show(){
-        return super.show();
-    }
-
-    @Override
-    public String type(){
-        return super.type();
-    }
 }

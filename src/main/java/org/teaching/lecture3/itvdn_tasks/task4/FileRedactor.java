@@ -9,22 +9,22 @@ package org.teaching.lecture3.itvdn_tasks.task4;
 
 public class FileRedactor {
 
-    static final int KEY_PRO = 481215;
-    static final int KEY_EXPERT = 1298656;
+    static final int PRO = 481215;
+    static final int EXPERT = 1298656;
 
-    public String versionSelection(int userKey) {
-        if (userKey == KEY_PRO) {
-            DocumentWorker proVersion = new ProDocumentWorker();
-            return proVersion.editDocument() + System.lineSeparator() +
-                    proVersion.saveDocument();
-        } else if (userKey == KEY_EXPERT) {
-            ProDocumentWorker expertVersion = new ExpertDocumentWorker();
-            return expertVersion.saveDocument();
-        } else {
-            DocumentWorker freeVersion = new DocumentWorker();
-            return freeVersion.openDocument() + System.lineSeparator() +
-                    freeVersion.editDocument() + System.lineSeparator() +
-                    freeVersion.saveDocument();
+    private DocumentWorker version;
+
+    public DocumentWorker documentFactory(int key){
+        switch (key){
+            case 123:
+                 version = new DocumentWorker();
+                 break;
+            case PRO:
+                 version = new ProDocumentWorker();
+                 break;
+            case EXPERT:
+                 version = new ExpertDocumentWorker();
         }
+        return version;
     }
 }

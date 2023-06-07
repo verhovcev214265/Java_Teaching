@@ -11,33 +11,44 @@ package org.teaching.lecture3.itvdn_tasks.task2;
 отдыхать
  */
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ClassRoom {
 
-    private final Pupil first;
-    private final Pupil second;
-    private final Pupil third;
-    private final Pupil fourth;
+    private static final Logger logger = LoggerFactory.getLogger(ClassRoom.class);
 
-    public ClassRoom(Pupil first, Pupil second, Pupil third, Pupil fourth){
-        this.first = first;
-        this.second = second;
-        this.third = third;
-        this.fourth = fourth;
+    private int numberOfPupils;
+    private Pupil[] pupils;
+
+    public ClassRoom(int numberOfPupils) {
+        if (numberOfPupils > 4) {
+            logger.error("The number of the pupils shouldn't be more than 4 persons. You have entered: {}", numberOfPupils);
+        }
+        pupils = new Pupil[numberOfPupils];
     }
 
-    public Pupil getFirst() {
-        return first;
+    public void setPupil(Pupil pupil) {
+        if (numberOfPupils >= pupils.length) {
+            logger.error("Can't add another pupil because arrays of pupils are full.");
+            return;
+        }
+        this.pupils[numberOfPupils] = pupil;
+        numberOfPupils++;
     }
 
-    public Pupil getSecond() {
-        return second;
+    public void setPupil(Pupil pupilA, Pupil pupilB) {
+        setPupil(pupilA);
+        setPupil(pupilB);
     }
 
-    public Pupil getThird() {
-        return third;
+    public void setPupil(Pupil pupilA, Pupil pupilB, Pupil pupilC) {
+        setPupil(pupilA, pupilB);
+        setPupil(pupilC);
     }
 
-    public Pupil getFourth() {
-        return fourth;
+    public Pupil[] getPupils(){
+        return pupils;
     }
 }

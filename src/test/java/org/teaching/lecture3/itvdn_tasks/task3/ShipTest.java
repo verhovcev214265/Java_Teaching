@@ -21,4 +21,10 @@ public class ShipTest {
         Assert.assertEquals(3000, ship.getPassengers());
         Assert.assertEquals("Monte Carlo", ship.getPort());
     }
+
+    @Test
+    public void checkInheritance(){
+        Assert.assertNotNull(ship);
+        Assert.assertTrue(ship instanceof Vehicle);
+    }
 }

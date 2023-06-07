@@ -13,7 +13,7 @@ public class CanonTest {
     @Before
     public void setUp(){
         printer = new Canon();
-        canon = new Canon();
+        canon = (Canon) printer;
     }
 
     @Test

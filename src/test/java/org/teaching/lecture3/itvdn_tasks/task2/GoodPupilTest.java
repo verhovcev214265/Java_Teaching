@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class GoodPupilTest {
 
-    private GoodPupil goodPupil;
+    private Pupil goodPupil;
 
     @Before
     public void setUp(){
@@ -14,22 +14,28 @@ public class GoodPupilTest {
     }
 
     @Test
+    public void checkInheritance(){
+        Assert.assertNotNull(goodPupil);
+        Assert.assertTrue(goodPupil instanceof Pupil);
+    }
+
+    @Test
     public void shouldReturn_defaultStudy(){
-        Assert.assertEquals("Study", goodPupil.study());
+        Assert.assertEquals("Good study", goodPupil.study());
     }
 
     @Test
     public void shouldReturn_defaultRead(){
-        Assert.assertEquals("Read", goodPupil.read());
+        Assert.assertEquals("Good read", goodPupil.read());
     }
 
     @Test
     public void shouldReturn_defaultWrite(){
-        Assert.assertEquals("Write", goodPupil.write());
+        Assert.assertEquals("Good write", goodPupil.write());
     }
 
     @Test
     public void shouldReturn_defaultRelax(){
-        Assert.assertEquals("Relax", goodPupil.relax());
+        Assert.assertEquals("Good relax", goodPupil.relax());
     }
 }

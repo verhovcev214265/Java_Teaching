@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class CarTest {
 
-    private Car car;
+    private Vehicle car;
 
     @Before
     public void setUp(){

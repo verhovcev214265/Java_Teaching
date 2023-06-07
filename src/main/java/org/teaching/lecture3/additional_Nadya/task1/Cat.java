@@ -10,14 +10,4 @@ public class Cat extends Pet{
     public String sound(){
         return "Meow - meow";
     }
-
-    @Override
-    public String show(){
-        return super.show();
-    }
-
-    @Override
-    public String type(){
-        return super.type();
-    }
 }
