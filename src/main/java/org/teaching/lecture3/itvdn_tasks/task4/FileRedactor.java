@@ -12,19 +12,14 @@ public class FileRedactor {
     static final int PRO = 481215;
     static final int EXPERT = 1298656;
 
-    private DocumentWorker version;
-
     public DocumentWorker documentFactory(int key){
         switch (key){
-            case 123:
-                 version = new DocumentWorker();
-                 break;
             case PRO:
-                 version = new ProDocumentWorker();
-                 break;
+                 return new ProDocumentWorker();
             case EXPERT:
-                 version = new ExpertDocumentWorker();
+                  return new ExpertDocumentWorker();
+            default:
+                return new DocumentWorker();
         }
-        return version;
     }
 }

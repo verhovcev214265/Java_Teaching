@@ -20,23 +20,25 @@ public class ClassRoom {
     private static final Logger logger = LoggerFactory.getLogger(ClassRoom.class);
 
     private int numberOfPupils;
-    private Pupil[] pupils;
+    private final Pupil[] pupils;
 
     public ClassRoom(int numberOfPupils) {
         if (numberOfPupils > 4) {
             logger.error("The number of the pupils shouldn't be more than 4 persons. You have entered: {}", numberOfPupils);
             throw new IllegalArgumentException("The number of the pupils shouldn't be more than 4 persons. You have entered:");
         }
+
         pupils = new Pupil[numberOfPupils];
     }
 
     public void setPupil(Pupil pupil) {
-        if ( (numberOfPupils + 1) >= pupils.length) {
+        numberOfPupils++;
+        if (numberOfPupils > pupils.length) {
             logger.error("Can't add another pupil because arrays of pupils are full.");
             return;
         }
-        this.pupils[numberOfPupils] = pupil;
-        numberOfPupils++;
+
+        this.pupils[numberOfPupils - 1] = pupil;
     }
 
     public void setPupil(Pupil pupilA, Pupil pupilB) {
@@ -49,7 +51,7 @@ public class ClassRoom {
         setPupil(pupilC);
     }
 
-    public Pupil[] getPupils(){
+    public Pupil[] getPupils() {
         return pupils;
     }
 }

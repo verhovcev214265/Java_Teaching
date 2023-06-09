@@ -42,7 +42,11 @@ public class ClassRoomTest {
 
     @Test
     public void checkSet(){
-        classRoom.setPupil(new BadPupil());
+        try {
+            classRoom.setPupil(new BadPupil());
+        }catch (Exception e){
+            Assert.fail();
+        }
     }
 
     @Test
