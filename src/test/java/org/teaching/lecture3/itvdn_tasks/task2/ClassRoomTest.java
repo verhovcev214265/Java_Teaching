@@ -3,8 +3,8 @@ package org.teaching.lecture3.itvdn_tasks.task2;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import static org.junit.Assert.assertThrows;
 
 /*
 Создать класс, представляющий учебный класс ClassRoom.
@@ -24,40 +24,59 @@ public class ClassRoomTest {
     @Before
     public void setUp() {
         classRoom = new ClassRoom(4);
+        classRoom.setPupil(new ExcellentPupil());
+        classRoom.setPupil(new ExcellentPupil(), new GoodPupil(), new BadPupil());
+    }
+
+    @Test()
+    public void testClassRoom_ByIllegalArgument() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            classRoom = new ClassRoom(5);
+        });
+
+        String expectedMessage = "The number of the pupils shouldn't be more than 4 persons. You have entered:";
+        String actualMessage = exception.getMessage();
+
+        Assert.assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
-    public void checkPupilsLength(){
+    public void checkSet(){
+        classRoom.setPupil(new BadPupil());
+    }
+
+    @Test
+    public void checkPupilsLength() {
         Assert.assertEquals(4, classRoom.getPupils().length);
     }
 
     @Test
     public void checkExcellentPupilStudying() {
-        Pupil excellent = new ExcellentPupil();
+        Pupil pupilExcellent = classRoom.getPupils()[0];
 
-        Assert.assertEquals("Excellent study", excellent.study());
-        Assert.assertEquals("Excellent read", excellent.read());
-        Assert.assertEquals("Excellent write", excellent.write());
-        Assert.assertEquals("Excellent relax", excellent.relax());
+        Assert.assertEquals("Excellent study", pupilExcellent.study());
+        Assert.assertEquals("Excellent read", pupilExcellent.read());
+        Assert.assertEquals("Excellent write", pupilExcellent.write());
+        Assert.assertEquals("Excellent relax", pupilExcellent.relax());
     }
 
     @Test
     public void checkThirdPupilStudying() {
-        Pupil good = new GoodPupil();
+        Pupil goodPupil = classRoom.getPupils()[2];
 
-        Assert.assertEquals("Good study", good.study());
-        Assert.assertEquals("Good read", good.read());
-        Assert.assertEquals("Good write", good.write());
-        Assert.assertEquals("Good relax", good.relax());
+        Assert.assertEquals("Good study", goodPupil.study());
+        Assert.assertEquals("Good read", goodPupil.read());
+        Assert.assertEquals("Good write", goodPupil.write());
+        Assert.assertEquals("Good relax", goodPupil.relax());
     }
 
     @Test
     public void checkFourthPupilStudying() {
-        Pupil bad = new BadPupil();
+        Pupil badPupil = classRoom.getPupils()[3];
 
-        Assert.assertEquals("Bad study", bad.study());
-        Assert.assertEquals("Bad read", bad.read());
-        Assert.assertEquals("Bad write", bad.write());
-        Assert.assertEquals("Bad relax", bad.relax());
+        Assert.assertEquals("Bad study", badPupil.study());
+        Assert.assertEquals("Bad read", badPupil.read());
+        Assert.assertEquals("Bad write", badPupil.write());
+        Assert.assertEquals("Bad relax", badPupil.relax());
     }
 }

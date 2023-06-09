@@ -25,12 +25,13 @@ public class ClassRoom {
     public ClassRoom(int numberOfPupils) {
         if (numberOfPupils > 4) {
             logger.error("The number of the pupils shouldn't be more than 4 persons. You have entered: {}", numberOfPupils);
+            throw new IllegalArgumentException("The number of the pupils shouldn't be more than 4 persons. You have entered:");
         }
         pupils = new Pupil[numberOfPupils];
     }
 
     public void setPupil(Pupil pupil) {
-        if (numberOfPupils >= pupils.length) {
+        if ( (numberOfPupils + 1) >= pupils.length) {
             logger.error("Can't add another pupil because arrays of pupils are full.");
             return;
         }
