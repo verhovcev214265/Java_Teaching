@@ -1,6 +1,6 @@
 package org.teaching.lecture4.itvdn.task1;
 
-public class XMLHandler extends Handler {
+public class XML extends Handler {
 
     @Override
     String open() {

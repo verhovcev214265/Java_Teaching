@@ -20,11 +20,11 @@ public class DocumentDefinition {
 
         switch (format) {
             case XML:
-                return new XMLHandler();
+                return new XML();
             case DOC:
-                return new DOCHandler();
+                return new DOC();
             case TXT:
-                return new TXTHandler();
+                return new TXT();
             default:
                 logger.error("This format isn't supported.");
                 throw new IllegalArgumentException("This format isn't supported.");

@@ -1,6 +1,6 @@
 package org.teaching.lecture4.itvdn.task1;
 
-public class TXTHandler extends Handler {
+public class TXT extends Handler {
     @Override
     String open() {
         return "TXT file has been opened";

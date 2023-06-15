@@ -1,6 +1,6 @@
 package org.teaching.lecture4.itvdn.task1;
 
-public class DOCHandler extends Handler {
+public class DOC extends Handler {
     @Override
     String open() {
         return "DOC file has been opened";
