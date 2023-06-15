@@ -1,4 +1,4 @@
-package org.teaching.lecture4.itvdn.task2;
+package org.teaching.lecture4.additional_from_nadia.task2;
 
 public class Rectangle extends Shape{
 

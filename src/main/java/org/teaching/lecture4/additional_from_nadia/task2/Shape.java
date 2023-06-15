@@ -1,4 +1,4 @@
-package org.teaching.lecture4.itvdn.task2;
+package org.teaching.lecture4.additional_from_nadia.task2;
 
 /*
 Создайте абстрактный базовый класс «Фигура» с абстрактным методом для подсчета площади. Создайте производные классы:
