@@ -20,11 +20,13 @@ public class ShapesTest {
 
     @Test
     public void testShapes_ByIllegalArgument(){
+        int numbersOfShapes = 4;
+
         Exception exception = assertThrows(
-                IllegalArgumentException.class, () -> shapes = new Shapes(4)
+                IllegalArgumentException.class, () -> shapes = new Shapes(numbersOfShapes)
         );
 
-        Object expectedMessage = "The number of the shapes shouldn't be more than 3. You have entered: " + 4;
+        String expectedMessage = "The number of the shapes shouldn't be more than 3. You have entered: " + numbersOfShapes;
         String actualMessage = exception.getMessage();
 
         Assert.assertEquals(expectedMessage, actualMessage);
@@ -32,14 +34,11 @@ public class ShapesTest {
 
     @Test
     public void checkSet(){
-        Exception exception = assertThrows(
-                IllegalArgumentException.class, () -> shapes.setShape(new Circle(11.0))
-        );
-
-        String expectedMessage = "Couldn't add another shape because array of shapes are full.";
-        String actualMessage = exception.getMessage();
-
-        Assert.assertEquals(expectedMessage, actualMessage);
+        try {
+            shapes.setShape(new Circle(11.0));
+        }catch (Exception e){
+            Assert.fail();
+        }
     }
 
     @Test

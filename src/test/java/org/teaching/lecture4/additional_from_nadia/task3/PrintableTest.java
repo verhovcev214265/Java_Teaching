@@ -1,5 +1,8 @@
 package org.teaching.lecture4.additional_from_nadia.task3;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 /*
 Интерфейс Printable
 - Определить интерфейс Printable, содержащий метод void print().
@@ -9,27 +12,13 @@ package org.teaching.lecture4.additional_from_nadia.task3;
 - В цикле пройти по массиву и вызвать метод print() для каждого объекта.
  */
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-public class BookTest {
-
-    private Printable book = new Book();
-
-    @Before
-    public void setUp(){
-        book = new Book();
-    }
+public class PrintableTest {
 
     @Test
-    public void checkInheritance(){
-        Assert.assertNotNull(book);
-        Assert.assertTrue(book instanceof Printable);
-    }
+    public void printingPress_test(){
+        Printable[] printing = {new Book(), new Magazine()};
 
-    @Test
-    public void shouldPrint_Book(){
-        Assert.assertEquals("Print book.", book.print());
+        Assert.assertEquals("Print book.", printing[0].print());
+        Assert.assertEquals("Print magazine.", printing[1].print());
     }
 }
