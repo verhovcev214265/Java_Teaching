@@ -1,4 +1,4 @@
-package org.teaching.lecture4.itvdn.task1;
+package org.teaching.lecture4.additional_from_nadia.task1;
 
 /*
 Создать абстрактный базовый класс Employer (служащий) с абстрактным методом Print(). Создайте три производных
