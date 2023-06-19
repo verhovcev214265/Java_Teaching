@@ -1,16 +1,9 @@
 package org.teaching.lecture1.task1;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class AddressTest {
-
-    @Ignore
-    @Test
-    public void myMethod(){
-        System.out.println("Hello");
-    }
 
     @Test
     public void addressTest(){
