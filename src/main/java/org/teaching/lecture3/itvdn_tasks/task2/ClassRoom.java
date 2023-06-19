@@ -25,7 +25,7 @@ public class ClassRoom {
     public ClassRoom(int numberOfPupils) {
         if (numberOfPupils > 4) {
             logger.error("The number of the pupils shouldn't be more than 4 persons. You have entered: {}", numberOfPupils);
-            throw new IllegalArgumentException("The number of the pupils shouldn't be more than 4 persons. You have entered:");
+            throw new IllegalArgumentException("The number of the pupils shouldn't be more than 4 persons. You have entered: " + numberOfPupils);
         }
 
         pupils = new Pupil[numberOfPupils];
