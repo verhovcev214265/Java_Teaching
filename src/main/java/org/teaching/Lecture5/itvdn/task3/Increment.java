@@ -15,7 +15,7 @@ public class Increment {
         ListIterator<Integer> listIterator = numbers.listIterator();
 
         for (int i = 0; listIterator.hasNext(); i++) {
-            numbers.set(i, numbers.get(i) + 1);
+            numbers.set(i, listIterator.next() + 1);
         }
 
         return numbers;

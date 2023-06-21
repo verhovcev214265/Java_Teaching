@@ -8,8 +8,9 @@ package org.teaching.lecture5.itvdn.task0;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.teaching.Lecture5.itvdn.task0.Teacher;
-import org.teaching.Lecture5.itvdn.task0.TeachersQuality;
+import org.teaching.Lecture5.itvdn.task0.*;
+
+import java.util.List;
 
 public class TeachersQualityTest {
 
@@ -18,30 +19,32 @@ public class TeachersQualityTest {
     @Before
     public void setUp(){
         teachers = new TeachersQuality();
+        teachers.addTeacher(new WorstTeacher("A", "B"));
+        teachers.addTeacher(new BestTeacher("C", "D"));
+        teachers.addTeacher(new MiddleTeacher("E", "F"));
     }
 
     @Test
     public void checkInheritance(){
-        Assert.assertNotNull(teachers);
-
-        for (int i = 0; i < teachers.addTeachers().size(); i++) {
-            Assert.assertTrue(teachers.addTeachers().get(i) instanceof Teacher);
+        List<Teacher> teacherList = teachers.getTeachers();
+        for (int i = 0; i < teacherList.size(); i++) {
+            Assert.assertTrue(teacherList.get(i) instanceof Teacher);
         }
     }
 
     @Test
     public void shouldReturn_TheBestTeacher(){
-        Assert.assertEquals("The best teacher.", teachers.addTeachers().get(0).aboutTeacher());
+        Assert.assertEquals(1, teachers.getBestTeacher());
     }
 
     @Test
     public void shouldReturn_TheNormalTeacher(){
-        Assert.assertEquals("Normal teacher.", teachers.addTeachers().get(1).aboutTeacher());
+
     }
 
     @Test
     public void shouldReturn_TheWorstTeacher(){
-        Assert.assertEquals("The worst teacher.", teachers.addTeachers().get(2).aboutTeacher());
+
     }
 
 

@@ -11,6 +11,8 @@ package org.teaching.Lecture5.aditional_nadia;
 5. Заменить значение в списке.
 В зависимости от выбора пользователя выполняется
 действие, после чего меню отображается снова.
+
+Create Main, check method into tests
  */
 
 import org.slf4j.Logger;

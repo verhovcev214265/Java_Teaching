@@ -1,8 +1,8 @@
 package org.teaching.Lecture5.itvdn.task0;
 
-public class TeacherOfMathematics extends Teacher {
+public class BestTeacher extends Teacher {
 
-    public TeacherOfMathematics(String name, String surname) {
+    public BestTeacher(String name, String surname) {
         super(name, surname);
     }
 
