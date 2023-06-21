@@ -1,4 +1,4 @@
-package org.teaching.Lecture5.itvdn.task1;
+package org.teaching.Lecture5.aditional_nadia;
 
 /*
 !!!
@@ -16,46 +16,34 @@ package org.teaching.Lecture5.itvdn.task1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ListManipulation {
 
     private static final Logger logger = LoggerFactory.getLogger(ListManipulation.class);
 
+    public List<Integer> numbersManipulation(List<Integer> numbers, int action) {
 
-    private static final int ADD = 1;
-    private static final int REMOVE = 2;
-    private static final int SET = 3;
-    private static final int INDEX = 4;
-    private static final int CHECKED = 999;
-
-    public List<Integer> changeToList(Integer[] arrNumbers){
-        return Arrays.asList(arrNumbers);
-    }
-
-    public List<Integer> numbersManipulation(List<Integer> numbers, int action){
-
-        switch (action){
-            case 1 :
-                numbers.add(ADD);
+        switch (action) {
+            case 1:
+                numbers.add(6);
                 break;
-            case 2 :
-                numbers.remove(REMOVE);
+            case 2:
+                numbers.remove(2);
                 break;
-            case 3 :
+            case 3:
                 return numbers;
-            case 4 :
-                numbers.set(INDEX, SET);
+            case 4:
+                numbers.set(2, 444);
                 break;
             default:
-                logger.error("You had entered non-exist action!");
+                logger.error("I have entered non-exist action");
+                throw new IllegalArgumentException("You have entered non-exist action");
         }
-
         return numbers;
     }
 
-    public boolean checkElement(List<Integer> numbers, int checked){
-        return numbers.contains(CHECKED);
+    public boolean checkElement(List<Integer> numbers) {
+        return numbers.contains(444);
     }
 }
