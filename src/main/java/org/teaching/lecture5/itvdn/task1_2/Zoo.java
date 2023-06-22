@@ -1,4 +1,4 @@
-package org.teaching.Lecture5.itvdn.task1_2;
+package org.teaching.lecture5.itvdn.task1_2;
 
 /*
 Создать класс Zoo. В классе создать список, в который записать 8 животных через метод add(index,
@@ -37,11 +37,11 @@ public class Zoo {
         return animals;
     }
 
-    public int removeSomeAnimals(ArrayList<String> animals){
-        animals.remove("Dog");
-        animals.remove("Lion");
-        animals.remove("Penguin");
-
-        return animals.size();
+    public void removeSomeAnimals(ArrayList<String> animals){
+        animals.remove(DOG);
+        animals.remove(LION);
+        animals.remove(PENGUIN);
     }
+
+
 }

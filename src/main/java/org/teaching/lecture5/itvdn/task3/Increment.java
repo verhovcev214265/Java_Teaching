@@ -1,4 +1,4 @@
-package org.teaching.Lecture5.itvdn.task3;
+package org.teaching.lecture5.itvdn.task3;
 
 /*
 Создать класс Main, создать список целых чисел и используя ListIterator пройтись по списку и увеличить

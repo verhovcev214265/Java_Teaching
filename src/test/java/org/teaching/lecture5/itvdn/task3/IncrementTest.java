@@ -1,9 +1,9 @@
-package org.teaching.lecture5.itvdn;
+package org.teaching.lecture5.itvdn.task3;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.teaching.Lecture5.itvdn.task3.Increment;
+import org.teaching.lecture5.itvdn.task3.Increment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,7 @@ public class IncrementTest {
         for (int i = 0; i < 5; i++) {
             numbers.add(i + 1);
         }
+        System.out.println(numbers);
     }
 
     @Test
@@ -32,5 +33,6 @@ public class IncrementTest {
         }
 
         Assert.assertEquals(expected, increment.incremented(numbers));
+        System.out.println(expected + "\n" + numbers);
     }
 }

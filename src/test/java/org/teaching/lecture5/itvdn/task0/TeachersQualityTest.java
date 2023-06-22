@@ -8,7 +8,7 @@ package org.teaching.lecture5.itvdn.task0;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.teaching.Lecture5.itvdn.task0.*;
+
 
 import java.util.List;
 
@@ -38,14 +38,15 @@ public class TeachersQualityTest {
     }
 
     @Test
-    public void shouldReturn_TheNormalTeacher(){
+    public void shouldReturn_TheMiddleTeacher(){
+        Assert.assertEquals(2,teachers.getMiddleTeacher());
 
     }
 
     @Test
     public void shouldReturn_TheWorstTeacher(){
+        Assert.assertEquals(0, teachers.getWorstTeacher());
 
     }
-
 
 }

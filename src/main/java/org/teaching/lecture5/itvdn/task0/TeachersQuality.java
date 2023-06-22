@@ -1,4 +1,4 @@
-package org.teaching.Lecture5.itvdn.task0;
+package org.teaching.lecture5.itvdn.task0;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,26 @@ public class TeachersQuality {
 
         for (int i = 0; i < teachers.size(); i++) {
             if (teachers.get(i) instanceof BestTeacher) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int getMiddleTeacher() {
+
+        for (int i = 0; i < teachers.size(); i++) {
+            if (teachers.get(i) instanceof MiddleTeacher) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int getWorstTeacher() {
+
+        for (int i = 0; i < teachers.size(); i++) {
+            if (teachers.get(i) instanceof WorstTeacher) {
                 return i;
             }
         }

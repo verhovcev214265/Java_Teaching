@@ -1,4 +1,4 @@
-package org.teaching.Lecture5.itvdn.task0;
+package org.teaching.lecture5.itvdn.task0;
 
 public class MiddleTeacher extends Teacher{
 

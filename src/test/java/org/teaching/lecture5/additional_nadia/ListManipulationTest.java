@@ -16,7 +16,7 @@ package org.teaching.lecture5.additional_nadia;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.teaching.Lecture5.aditional_nadia.ListManipulation;
+import org.teaching.lecture5.aditional_nadia.ListManipulation;
 
 import java.util.ArrayList;
 import java.util.List;

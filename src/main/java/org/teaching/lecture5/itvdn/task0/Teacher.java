@@ -1,4 +1,4 @@
-package org.teaching.Lecture5.itvdn.task0;
+package org.teaching.lecture5.itvdn.task0;
 
 /*
 Создать class Main, в нем создать список, добавить учителей, которых вы только сможете вспомнить со

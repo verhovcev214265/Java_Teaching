@@ -13,14 +13,13 @@ element).
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.teaching.Lecture5.itvdn.task1_2.Zoo;
 
 import java.util.ArrayList;
 
 public class ZooTest {
 
     private Zoo zoo;
-    ArrayList<String> animals;
+    private ArrayList<String> animals;
 
     @Before
     public void setUp(){
@@ -45,7 +44,9 @@ public class ZooTest {
 
     @Test
     public void checkSizeWithout_Third_Fifth_Seventh(){
-        Assert.assertEquals(5, zoo.removeSomeAnimals(animals));
+        Assert.assertEquals(8, animals.size());
+        zoo.removeSomeAnimals(animals);
+        Assert.assertEquals(5, animals.size());
 
     }
 }

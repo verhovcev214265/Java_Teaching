@@ -1,4 +1,4 @@
-package org.teaching.Lecture5.aditional_nadia;
+package org.teaching.lecture5.aditional_nadia;
 
 /*
 !!!
