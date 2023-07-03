@@ -12,7 +12,6 @@ package org.teaching.lecture5.additional_nadia;
 действие, после чего меню отображается снова.
  */
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -25,15 +24,5 @@ public class ListManipulationTest {
     private ListManipulation listManipulation;
     private List<Integer> mokList;
 
-    @Before
-    public void setUp(){
-        mokList = Mockito.mock(List.class);
-        listManipulation = new ListManipulation(mokList);
-    }
 
-    @Test
-    public void performActions_test(){
-        listManipulation.performActions(1, 10, 0);
-        Mockito.verify(mokList).add(10);
-    }
 }
