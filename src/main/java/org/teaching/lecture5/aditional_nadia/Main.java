@@ -1,7 +1,6 @@
 package org.teaching.lecture5.aditional_nadia;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,18 +9,21 @@ public class Main {
         System.out.println("Enter list size:");
         Scanner scan = new Scanner(System.in);
 
-        int size = scan.nextInt();
+        int listSize = scan.nextInt();
 
-        List<Integer> numbers = new ArrayList<>();
+        ListManipulation listManipulation = new ListManipulation(new ArrayList<>(listSize));
 
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < listSize; i++) {
             System.out.println("Enter the " + i + " number:");
 
-            int current = scan.nextInt();
-            numbers.add(current);
+            int currentNumber = scan.nextInt();
+            listManipulation.getNumbers().add(currentNumber);
         }
 
         System.out.println(
+
+                listManipulation.getNumbers() + "\n" +
+
                 "Choose the action: \n" +
                         "1 - Add element;\n" +
                         "2 - Delete element;\n" +
@@ -30,5 +32,15 @@ public class Main {
                         "5 - Change a value of the list."
         );
 
+        int action = scan.nextInt();
+
+        System.out.println("Enter element:");
+        int element = scan.nextInt();
+
+        System.out.println("Enter index:");
+        int index = scan.nextInt();
+
+        listManipulation.performActions(action, element, index);
+        
     }
 }
