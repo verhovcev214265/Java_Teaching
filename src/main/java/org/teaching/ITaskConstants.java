@@ -11,6 +11,5 @@ public interface ITaskConstants {
         String BLUE = "\u001B[34m";
 //        String PURPLE = "\u001B[35m";
 //        String CYAN = "\u001B[36m";
-//        String WHITE = "\u001B[37m";
     }
 }
