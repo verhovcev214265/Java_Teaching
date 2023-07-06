@@ -22,16 +22,11 @@ import java.util.Scanner;
 public class ListManipulation {
 
     private static final Logger logger = LoggerFactory.getLogger(ListManipulation.class);
+    private final List<Integer> numbers;
+    private Scanner scan;
 
-    private List<Integer> numbers;
-    private Scanner sc;
-
-    public void setSc(Scanner sc) {
-        this.sc = sc;
-    }
-
-    public ListManipulation(int listSize) {
-        this.numbers = new ArrayList<>(listSize);
+    public ListManipulation() {
+        this.numbers = new ArrayList<>();
     }
 
     public boolean performActions(int action) {
@@ -52,14 +47,14 @@ public class ListManipulation {
                 changeSomeElement();
                 return true;
             default:
-                logger.error("You have entered invalid action please choose your action between 1 and 5.");
+                logger.error("Bye - bye!");
                 return false;
         }
     }
 
     private void append() {
         logger.info("Enter the number:");
-        String input = sc.next();
+        String input = scan.next();
         int element = Integer.parseInt(input);
 
         numbers.add(element);
@@ -67,10 +62,15 @@ public class ListManipulation {
 
     private void delete() {
         logger.info("Enter the number:");
-        String input = sc.next();
+        String input = scan.next();
         int element = Integer.parseInt(input);
 
-        numbers.remove(element);
+        int index = numbers.indexOf(element);
+        if (index == -1) {
+            logger.error("The number you have entered does not exists!");
+            return;
+        }
+        numbers.remove(index);
     }
 
     private void show() {
@@ -79,7 +79,7 @@ public class ListManipulation {
 
     private void isElement() {
         logger.info("Enter the number:");
-        String input = sc.next();
+        String input = scan.next();
         int element = Integer.parseInt(input);
 
         boolean result = numbers.contains(element);
@@ -89,20 +89,24 @@ public class ListManipulation {
     private void changeSomeElement() {
 
         logger.info("Enter the number to change: ");
-        String input = sc.next();
+        String input = scan.next();
         int element = Integer.parseInt(input);
 
         logger.info("Enter the new newValue: ");
-        input = sc.next();
+        input = scan.next();
         int newValue = Integer.parseInt(input);
 
         int index = numbers.indexOf(element);
         if (index == -1){
-            logger.error("The number you have entered does not exists!");
+            logger.info("The number you have entered doesn't exist in this list.");
             return;
         }
 
         numbers.set(index, newValue);
+    }
+
+    public void setScan(Scanner scan) {
+        this.scan = scan;
     }
 
     public List<Integer> getNumbers() {

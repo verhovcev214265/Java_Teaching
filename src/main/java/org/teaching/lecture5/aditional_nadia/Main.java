@@ -8,28 +8,23 @@ public class Main {
         System.out.println("Enter list size:");
         Scanner scan = new Scanner(System.in);
 
-        String inputListSize = scan.next();
-        int listSize = Integer.parseInt(inputListSize);
+        int inputListSize = scan.nextInt();
 
+        ListManipulation listManipulation = new ListManipulation();
+        listManipulation.setScan(scan);
 
-        ListManipulation listManipulation = new ListManipulation(listSize);
-        listManipulation.setSc(scan);
+        for (int i = 0; i < inputListSize; i++) {
+            System.out.println("Enter the " + (i + 1) + " number:");
 
-        for (int i = 0; i < listSize; i++) {
-            System.out.println("Enter the " + i + " number:");
-
-            String inputCurrentNumber = scan.next();
-            int currentNumber = Integer.parseInt(inputCurrentNumber);
-            listManipulation.getNumbers().add(currentNumber);
+            int inputCurrentNumber = scan.nextInt();
+            listManipulation.getNumbers().add(inputCurrentNumber);
         }
 
-        boolean isExit;
+        boolean isRunning;
 
         do {
             System.out.println(
-
                     listManipulation.getNumbers() + "\n" +
-
                             "Choose the action: \n" +
                             "1 - Add element;\n" +
                             "2 - Delete element;\n" +
@@ -39,11 +34,10 @@ public class Main {
                             " Any other - to exit."
             );
 
-            String input = scan.next();
-            int action = Integer.parseInt(input);
+            int action = scan.nextInt();
 
-            isExit = listManipulation.performActions(action);
-        }while (!isExit);
-
+            isRunning = listManipulation.performActions(action);
+        } while (isRunning);
     }
+
 }
