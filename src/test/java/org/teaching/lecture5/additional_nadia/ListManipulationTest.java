@@ -117,5 +117,4 @@ public class ListManipulationTest {
         Assert.assertFalse(listManipulation.performActions(6));
     }
 
-
 }
