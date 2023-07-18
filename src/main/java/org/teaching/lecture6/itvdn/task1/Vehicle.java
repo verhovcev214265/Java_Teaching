@@ -2,7 +2,7 @@ package org.teaching.lecture6.itvdn.task1;
 
 /*
 Создать класс Vehicle с методом print. В классе Vehicle, создайте внутренний класс Wheel и Door, которые
-также должны содержать метод print. Создайте экземпляры классов Wheel и Door.
+также должны содержать метод print.
  */
 
 public class Vehicle {
@@ -12,14 +12,12 @@ public class Vehicle {
     }
 
     class Wheel{
-
         public String print(){
             return "Wheel has printed";
         }
     }
 
     class Door{
-
         public String print(){
             return "Door has printed";
         }
