@@ -16,6 +16,11 @@ public class VehicleTest {
     }
 
     @Test
+    public void print_test(){
+        Assert.assertEquals("Vehicle has printed", vehicle.print());
+    }
+
+    @Test
     public void printWheel_test(){
         Assert.assertEquals("Wheel has printed", vehicle.new Wheel().print());
     }
@@ -24,6 +29,5 @@ public class VehicleTest {
     public void printDoor_test(){
         Assert.assertEquals("Door has printed", vehicle.new Door().print());
     }
-
 
 }

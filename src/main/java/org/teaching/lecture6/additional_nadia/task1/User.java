@@ -12,8 +12,10 @@ public class User {
 
     private final String login;
     private final int password;
+    private Query query;
 
     public User(String login, int password) {
+        query = new Query();
         this.login = login;
         this.password = password;
     }
@@ -28,7 +30,6 @@ public class User {
     }
 
     public String createQuery() {
-        Query query = new Query();
         return query.printToLog();
     }
 
@@ -39,4 +40,5 @@ public class User {
     public int getPassword() {
         return password;
     }
+
 }

@@ -13,39 +13,30 @@ import org.junit.Test;
 public class UserTest {
 
     private User user;
-    private User.Query query;
+    private static final String LOGIN = "Oleksandr";
+    private static final int PASSWORD = 2142;
+    private static final String EXPECTED = "The user login: " + LOGIN + "\n" +
+            "password: " + PASSWORD + "\n" +
+            "Has sent request to system.";
 
     @Before
     public void setUp(){
-        user = new User("Oleksandr", 2142);
-        query = new User("Oleksandr", 2142).new Query();
+        user = new User(LOGIN, PASSWORD);
     }
 
     @Test
     public void createQuery_test(){
-        Object expected = "The user login: " + user.getLogin() + "\n" +
-                "password: " + user.getPassword() + "\n" +
-                "Has sent request to system.";
-
-        Assert.assertEquals(expected, user.createQuery());
+        Assert.assertEquals(EXPECTED, user.createQuery());
     }
 
     @Test
     public void printToLog_testA(){
-        Object expected = "The user login: " + user.getLogin() + "\n" +
-                "password: " + user.getPassword() + "\n" +
-                "Has sent request to system.";
-
-        Assert.assertEquals(expected, user.new Query().printToLog());
+        Assert.assertEquals(EXPECTED, user.new Query().printToLog());
     }
 
     @Test
     public void printToLog_testB(){
-        Object expected = "The user login: " + user.getLogin() + "\n" +
-                "password: " + user.getPassword() + "\n" +
-                "Has sent request to system.";
-
-        Assert.assertEquals(expected, query.printToLog());
+        Assert.assertEquals(EXPECTED, new User(LOGIN, PASSWORD).new Query().printToLog());
     }
 
 }

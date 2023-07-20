@@ -8,22 +8,14 @@ package org.teaching.lecture6.itvdn.task2;
 
 public class Distance {
 
-    private static double distance;
-
     static class Converter {
 
         public double toKilometers(double meters) {
-            distance = meters / 1000;
-            return distance;
+            return meters / 1000;
         }
 
         public double toMiles(double kilometers) {
-            distance = kilometers * 0.621;
-            return distance;
+            return kilometers * 0.621;
         }
-    }
-
-    public static double getDistance() {
-        return distance;
     }
 }

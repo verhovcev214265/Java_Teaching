@@ -1,24 +1,30 @@
 package org.teaching.lecture6.additional_vlad;
 
+/*
+Given a list of integers, determine whether the sum of its elements is odd or even.
+Give your answer as a string matching "odd" or "even".
+If the input array is empty consider it as: [0] (array with a zero).
+ */
+
 public class Sum {
 
+    private static final String EVEN = "even";
+    private static final String ODD = "odd";
+
     public String getOddOrEven(int[] numbers) {
-        try {
-            if (numbers.length == 0) {
-                throw new Exception();
-            }
 
-            int sum = 0;
+        if (numbers == null || numbers.length == 0) return EVEN;
 
-            for (int number : numbers) {
-                sum += number;
-            }
+        int sum = 0;
 
-            if (sum % 2 == 0) return "even";
-
-            return "odd";
-        } catch (Exception e) {
-            return "even";
+        for (int number : numbers) {
+            sum += number;
         }
+
+        if (sum % 2 == 0) return EVEN;
+
+        return ODD;
+
     }
 }
+
