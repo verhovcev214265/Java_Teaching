@@ -14,15 +14,15 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterListTest {
+public class FilterTest {
 
-    private FilterList filterList;
-    private List<String> expected;
+    private Filter filterList;
+    private List<Integer> expected;
     private List<Object> actual;
 
     @Before
     public void setUp() {
-        filterList = new FilterList();
+        filterList = new Filter();
         expected = new ArrayList<>();
     }
 
@@ -35,8 +35,8 @@ public class FilterListTest {
         actual.add("a");
         actual.add("b");
 
-        expected.add("a");
-        expected.add("b");
+        expected.add(1);
+        expected.add(2);
 
         Assert.assertEquals(expected, filterList.filteredOut(actual));
     }
@@ -45,14 +45,16 @@ public class FilterListTest {
     public void filteredOut_testB() {
         actual = new ArrayList<>();
         actual.add(1);
-        actual.add(1);
+        actual.add(2);
         actual.add("a");
         actual.add("b");
         actual.add(0);
         actual.add(15);
 
-        expected.add("a");
-        expected.add("b");
+        expected.add(1);
+        expected.add(2);
+        expected.add(0);
+        expected.add(15);
 
         Assert.assertEquals(expected, filterList.filteredOut(actual));
     }
@@ -62,7 +64,7 @@ public class FilterListTest {
 
         actual = new ArrayList<>();
         actual.add(1);
-        actual.add(1);
+        actual.add(2);
         actual.add("a");
         actual.add("b");
         actual.add("aasf");
@@ -70,11 +72,11 @@ public class FilterListTest {
         actual.add("123");
         actual.add(231);
 
-        expected.add("a");
-        expected.add("b");
-        expected.add("aasf");
-        expected.add("1");
-        expected.add("123");
+        expected.add(1);
+        expected.add(2);
+        expected.add(1);
+        expected.add(123);
+        expected.add(231);
 
         Assert.assertEquals(expected, filterList.filteredOut(actual));
     }
