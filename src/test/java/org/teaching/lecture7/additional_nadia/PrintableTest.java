@@ -8,8 +8,8 @@ public class PrintableTest {
     @Test
     public void print_test(){
 
-        Book book = new Book();
-        Magazine magazine = new Magazine();
+        Printable book = new Book();
+        Printable magazine = new Magazine();
 
         Printable printable = new Printable() {
             @Override
@@ -18,11 +18,11 @@ public class PrintableTest {
             }
         };
 
-        Printable[] forPrinting = {book, magazine, printable};
+        Printable[] prints = {book, magazine, printable};
 
-        Assert.assertEquals("Book has printed", forPrinting[0].print());
-        Assert.assertEquals("Magazine has printed", forPrinting[1].print());
-        Assert.assertEquals("Newspaper has printed", forPrinting[2].print());
+        Assert.assertEquals("Book has printed", prints[0].print());
+        Assert.assertEquals("Magazine has printed", prints[1].print());
+        Assert.assertEquals("Newspaper has printed", prints[2].print());
     }
 
 }

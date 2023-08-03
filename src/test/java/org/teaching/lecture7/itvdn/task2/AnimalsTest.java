@@ -1,8 +1,7 @@
-package org.teaching.lecture7.itvdn.task1.task2;
+package org.teaching.lecture7.itvdn.task2;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.teaching.lecture7.itvdn.task2.Animals;
 
 public class AnimalsTest {
 

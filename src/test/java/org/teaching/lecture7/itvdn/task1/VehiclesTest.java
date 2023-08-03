@@ -12,6 +12,7 @@ public class VehiclesTest {
         vehicle = Vehicles.BMW;
 
         Assert.assertEquals("Vehicle BMW, color is Black, price = 10000.", vehicle.toString());
+        Assert.assertEquals("Black", vehicle.getColor());
     }
 
     @Test
@@ -19,6 +20,8 @@ public class VehiclesTest {
         vehicle = Vehicles.OPEL;
 
         Assert.assertEquals("Vehicle OPEL, color is Red, price = 3000.", vehicle.toString());
-
+        Assert.assertEquals("Red", vehicle.getColor());
     }
+
+
 }

@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FilterTest {
@@ -27,58 +28,63 @@ public class FilterTest {
     }
 
     @Test
-    public void filteredOut_testA() {
+    public void filteredOutA_test() {
 
-        actual = new ArrayList<>();
-        actual.add(1);
-        actual.add(2);
-        actual.add("a");
-        actual.add("b");
+        expected = Arrays.asList(1, 2, 1, 123, 231);
+        actual = Arrays.asList(1, 2, "a", "b", "aasf", "1", "123", 231);
 
-        expected.add(1);
-        expected.add(2);
-
-        Assert.assertEquals(expected, filterList.filteredOut(actual));
+        Assert.assertEquals(expected, filterList.filteredOutA(actual));
     }
 
     @Test
-    public void filteredOut_testB() {
-        actual = new ArrayList<>();
-        actual.add(1);
-        actual.add(2);
-        actual.add("a");
-        actual.add("b");
-        actual.add(0);
-        actual.add(15);
+    public void filteredOutB_test(){
 
-        expected.add(1);
-        expected.add(2);
-        expected.add(0);
-        expected.add(15);
+        expected = Arrays.asList(1, 2, 1, 123, 231);
+        actual = Arrays.asList(1, 2, "a", "b", "aasf", "1", "123", 231);
 
-        Assert.assertEquals(expected, filterList.filteredOut(actual));
+        Assert.assertEquals(expected, filterList.filteredOutB(actual));
     }
 
     @Test
-    public void filteredOut_testC() {
+    public void filteredOutA_timeTest(){
+        long start, finish;
+        int iterations = 1_000_000;
 
-        actual = new ArrayList<>();
-        actual.add(1);
-        actual.add(2);
-        actual.add("a");
-        actual.add("b");
-        actual.add("aasf");
-        actual.add("1");
-        actual.add("123");
-        actual.add(231);
+        expected = Arrays.asList(1, 2, 1, 123, 231);
+        actual = Arrays.asList(1, 2, "a", "b", "aasf", "1", "123", 231);
 
-        expected.add(1);
-        expected.add(2);
-        expected.add(1);
-        expected.add(123);
-        expected.add(231);
+        List<Integer> result = null;
 
-        Assert.assertEquals(expected, filterList.filteredOut(actual));
+        start = System.nanoTime();
+        for (int i = 0; i < iterations; i++) {
+            result = filterList.filteredOutA(actual);
+        }
+        finish = System.nanoTime() - start;
+
+        Assert.assertEquals(expected, result);
+        System.out.println("Avg time for one operation = " + (finish / iterations) + " nanoseconds");
+
+    }
+
+    @Test
+    public void filteredOutB_timeTest(){
+        long start, finish;
+        int iterations = 100;
+
+        expected = Arrays.asList(1, 2, 1, 123, 231);
+        actual = Arrays.asList(1, 2, "a", "b", "aasf", "1", "123", 231);
+
+        List<Integer> result = null;
+
+        start = System.nanoTime();
+        for (int i = 0; i < iterations; i++) {
+            result = filterList.filteredOutB(actual);
+        }
+        finish = System.nanoTime() - start;
+
+        Assert.assertEquals(expected, result);
+        System.out.println("Avg time for one operation = " + (finish / iterations) + " nanoseconds");
+
     }
 
 }
