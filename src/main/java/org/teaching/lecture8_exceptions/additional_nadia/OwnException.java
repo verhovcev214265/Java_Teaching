@@ -1,4 +1,4 @@
-package org.teaching.lecture8_exceptions.aditional_nadia;
+package org.teaching.lecture8_exceptions.additional_nadia;
 
 public class OwnException extends Exception {
 
