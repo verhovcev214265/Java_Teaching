@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 public class Calculator {
 
-    private static final Logger logger = LoggerFactory.getLogger(Calculator.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Calculator.class);
     private Scanner scan;
 
     public double operationFactory(int operation) throws InputMismatchException {
@@ -36,46 +36,46 @@ public class Calculator {
             case 4:
                 result = div();
             default:
-                logger.info("Bye - bye!");
+                LOGGER.info("Bye - bye!");
         }
         return result;
     }
 
     public double add() {
-        logger.info("Enter operandA:");
+        LOGGER.info("Enter operandA:");
         double operandA = scan.nextDouble();
 
-        logger.info("Enter operandB:");
+        LOGGER.info("Enter operandB:");
         double operandB = scan.nextDouble();
 
         return operandA + operandB;
     }
 
     public double sub() {
-        logger.info("Enter operandA:");
+        LOGGER.info("Enter operandA:");
         double operandA = scan.nextDouble();
 
-        logger.info("Enter operandB:");
+        LOGGER.info("Enter operandB:");
         double operandB = scan.nextDouble();
 
         return operandA - operandB;
     }
 
     public double mul() {
-        logger.info("Enter operandA:");
+        LOGGER.info("Enter operandA:");
         double operandA = scan.nextDouble();
 
-        logger.info("Enter operandB:");
+        LOGGER.info("Enter operandB:");
         double operandB = scan.nextDouble();
 
         return operandA * operandB;
     }
 
     public double div() {
-        logger.info("Enter operandA:");
+        LOGGER.info("Enter operandA:");
         double operandA = scan.nextDouble();
 
-        logger.info("Enter operandB:");
+        LOGGER.info("Enter operandB:");
         double operandB = scan.nextDouble();
 
         if (operandB == 0) throw new ArithmeticException("Due you mustn't divided by zero!");
