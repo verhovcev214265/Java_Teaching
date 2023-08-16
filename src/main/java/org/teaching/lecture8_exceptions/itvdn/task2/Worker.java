@@ -10,37 +10,40 @@ import java.time.Year;
 
 public class Worker implements Comparable<Worker>{
 
-    private String name;
-    private String sureName;
-    private String position;
-    private Year startYear;
+    private final String name;
+    private final String surname;
+    private final String position;
+    private final Year startYear;
 
-    public Worker(String name, String sureName, String position, int yearIntoWork) {
+    public Worker(String name, String sureName, String position, String yearIntoWork) {
         this.name = name;
-        this.sureName = sureName;
+        this.surname = sureName;
         this.position = position;
-        this.startYear = Year.of(yearIntoWork);
+
+        int startYear = Integer.parseInt(yearIntoWork);
+        this.startYear = Year.of(startYear);
     }
 
     @Override
     public int compareTo(Worker other) {
-        return this.sureName.compareTo(other.sureName);
+        return this.surname.compareTo(other.surname);
     }
 
     public Year getStartYear() {
         return startYear;
     }
 
-    public String getSureName() {
-        return sureName;
+    public String getSurname() {
+        return surname;
     }
 
     @Override
     public String toString() {
         return "Worker - " +
                 "name: " + name +
-                ", surname: " + sureName +
+                ", surname: " + surname +
                 ", position: " + position +
                 ", year of entry into work: " + startYear + ".";
     }
+
 }

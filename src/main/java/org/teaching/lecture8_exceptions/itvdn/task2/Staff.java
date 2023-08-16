@@ -4,7 +4,7 @@ package org.teaching.lecture8_exceptions.itvdn.task2;
 Написать программу, выполняющую следующие действия:
  ввод с клавиатуры данных в массив, состоящий из пяти элементов типа Worker (записи должны
 быть упорядочены по алфавиту);
- если значение года введено не в соответствующем формате выдает исключение.
+ если значение года введено не в соответствующем формате выдает исключение. ???
  вывод на экран фамилии работника, стаж работы которого превышает введенное значение.
  */
 
@@ -33,7 +33,7 @@ public class Staff {
         workers = new Worker[numbersOfWorkers];
     }
 
-    public void setWorker(Worker worker) throws IllegalArgumentException{
+    public void setWorker(Worker worker) throws NumberFormatException{
         numbersOfWorkers++;
 
         if (numbersOfWorkers > workers.length){
@@ -51,26 +51,23 @@ public class Staff {
         String position = scan.next();
 
         LOGGER.info("Enter year of starting work:");
-        int year = scan.nextInt();
+        String year = scan.next();
 
         this.workers[numbersOfWorkers - 1] = new Worker(name, surname, position, year);
     }
 
-    public List<String> calculateExperience(Worker[] workers){
+    public List<String> calculateExperience(int requiredExperience){
 
         List<String> relevantWorkers = new ArrayList<>();
 
         Year currentYear = Year.now();
 
-        for (int i = 0; i < workers.length; i++) {
+        for (Worker worker : workers) {
 
-            LOGGER.info("Enter years of experience: ");
-            long requiredExperience = scan.nextLong();
+            long currentExperience = ChronoUnit.YEARS.between(worker.getStartYear(), currentYear);
 
-            long currentExperience = ChronoUnit.YEARS.between(workers[i].getStartYear(), currentYear);
-
-            if (currentExperience > requiredExperience){
-                relevantWorkers.add(workers[i].getSureName());
+            if (currentExperience > requiredExperience) {
+                relevantWorkers.add(worker.getSurname());
             }
         }
 
@@ -84,4 +81,5 @@ public class Staff {
     public void setScan(Scanner scan){
         this.scan = scan;
     }
+
 }

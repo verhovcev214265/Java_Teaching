@@ -13,52 +13,54 @@ import java.util.Scanner;
 import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.when;
 
-public class WorkerTest {
+public class StuffTest {
 
     private Staff staff;
     private List<String> expected;
-    private Scanner mockScan;
+    Worker worker;
 
     @Before
     public void setUp(){
         staff = new Staff(5);
 
-        mockScan = Mockito.mock(Scanner.class);
+        Scanner mockScan = Mockito.mock(Scanner.class);
         staff.setScan(mockScan);
 
         expected = new ArrayList<>();
 
-        when(mockScan.next()).thenReturn("Oleks").thenReturn("Horianinskyi").thenReturn("developer");
-        when(mockScan.nextInt()).thenReturn(2018);
-        staff.setWorker(new Worker("Oleks", "Horianinskyi", "developer", 2018));
+        when(mockScan.next()).thenReturn("Oleks").thenReturn("Horianinskyi").thenReturn("developer").thenReturn("2018");
+        staff.setWorker(new Worker("Oleks", "Horianinskyi", "developer", "2018"));
 
-        when(mockScan.next()).thenReturn("Olek").thenReturn("Aorianinsky").thenReturn("develope");
-        when(mockScan.nextInt()).thenReturn(2019);
-        staff.setWorker(new Worker("Olek", "Aorianinsky", "develope", 2019));
+        when(mockScan.next()).thenReturn("Olek").thenReturn("Aorianinsky").thenReturn("develope").thenReturn("2019");
+        staff.setWorker(new Worker("Olek", "Aorianinsky", "develope", "2019"));
 
-        when(mockScan.next()).thenReturn("Ole").thenReturn("Corianinsk").thenReturn("develop");
-        when(mockScan.nextInt()).thenReturn(2020);
-        staff.setWorker(new Worker("Ole", "Corianinsk", "develop", 2020));
+        when(mockScan.next()).thenReturn("Ole").thenReturn("Corianinsk").thenReturn("develop").thenReturn("2020");
+        staff.setWorker(new Worker("Ole", "Corianinsk", "develop", "2020"));
 
-        when(mockScan.next()).thenReturn("Ol").thenReturn("Dorianins").thenReturn("develo");
-        when(mockScan.nextInt()).thenReturn(2021);
-        staff.setWorker(new Worker("Ol", "Dorianins", "develo", 2021));
+        when(mockScan.next()).thenReturn("Ol").thenReturn("Dorianins").thenReturn("develo").thenReturn("2021");
+        staff.setWorker(new Worker("Ol", "Dorianins", "develo", "2021"));
 
-        when(mockScan.next()).thenReturn("O").thenReturn("Borianin").thenReturn("devel");
-        when(mockScan.nextInt()).thenReturn(2022);
-        staff.setWorker(new Worker("O", "Borianin", "devel", 2022));
+        when(mockScan.next()).thenReturn("O").thenReturn("Borianin").thenReturn("devel").thenReturn("2022");
+        staff.setWorker(new Worker("O", "Borianin", "devel", "2022"));
     }
 
     @Test
     public void testStuff_By_IllegalArgument(){
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            staff = new Staff(6);
-        });
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> staff = new Staff(6));
 
         String expectedMessage = "The number of the workers shouldn't be more than 5 - persons. You've entered: 6";
         String actual = exception.getMessage();
 
         Assert.assertEquals(expectedMessage, actual);
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void testStuff_By_NumberFormatException(){
+
+        worker = new Worker("Vasiliy", "Baranskyi", "security", "qwed");
+        worker = new Worker("Vasiliy", "Baranskyi", "security", "112.0");
+        worker = new Worker("Vasiliy", "Baranskyi", "security", "&$#!@");
+
     }
 
     @Test
@@ -79,7 +81,6 @@ public class WorkerTest {
 
     @Test
     public void sortCheck(){
-
         Arrays.sort(staff.getWorkers());
 
         expected = Arrays.asList(
@@ -93,6 +94,22 @@ public class WorkerTest {
         for (int i = 0; i < staff.getWorkers().length; i++) {
             Assert.assertEquals(expected.get(i), staff.getWorkers()[i].toString());
         }
+    }
+
+    @Test
+    public void calculateExperience_test_withoutSort(){
+        List<String> expected = Arrays.asList("Horianinskyi", "Aorianinsky");
+
+        Assert.assertEquals(expected, staff.calculateExperience(3));
+    }
+
+    @Test
+    public void calculateExperience_test_WithSort(){
+        Arrays.sort(staff.getWorkers());
+
+        List<String> expected = Arrays.asList("Aorianinsky", "Horianinskyi");
+
+        Assert.assertEquals(expected, staff.calculateExperience(3));
     }
 
 }
