@@ -11,6 +11,10 @@ package org.teaching.lecture8_exceptions.itvdn.task2;
 import org.slf4j.Logger;
 import  org.slf4j.LoggerFactory;
 
+import java.time.Year;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Staff {
@@ -29,7 +33,7 @@ public class Staff {
         workers = new Worker[numbersOfWorkers];
     }
 
-    public void setWorker(Worker worker){
+    public void setWorker(Worker worker) throws IllegalArgumentException{
         numbersOfWorkers++;
 
         if (numbersOfWorkers > workers.length){
@@ -50,6 +54,27 @@ public class Staff {
         int year = scan.nextInt();
 
         this.workers[numbersOfWorkers - 1] = new Worker(name, surname, position, year);
+    }
+
+    public List<String> calculateExperience(Worker[] workers){
+
+        List<String> relevantWorkers = new ArrayList<>();
+
+        Year currentYear = Year.now();
+
+        for (int i = 0; i < workers.length; i++) {
+
+            LOGGER.info("Enter years of experience: ");
+            long requiredExperience = scan.nextLong();
+
+            long currentExperience = ChronoUnit.YEARS.between(workers[i].getStartYear(), currentYear);
+
+            if (currentExperience > requiredExperience){
+                relevantWorkers.add(workers[i].getSureName());
+            }
+        }
+
+        return relevantWorkers;
     }
 
     public Worker[] getWorkers() {
