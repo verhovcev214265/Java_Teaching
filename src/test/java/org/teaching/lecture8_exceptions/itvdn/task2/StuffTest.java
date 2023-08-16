@@ -3,6 +3,8 @@ package org.teaching.lecture8_exceptions.itvdn.task2;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+//import org.junit.Rule;
+//import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -54,14 +56,27 @@ public class StuffTest {
         Assert.assertEquals(expectedMessage, actual);
     }
 
+//    @Rule
+//    public ExpectedException exceptionRule = ExpectedException.none();
+//
+//    @Test()
+//    public void testStuff_By_NumberFormatException(){
+//        exceptionRule.expect(NumberFormatException.class);
+//
+//        worker = new Worker("Vasiliy", "Baranskyi", "security", "qwed");
+//        worker = new Worker("Vasiliy", "Baranskyi", "security", "112.0");
+//        worker = new Worker("Vasiliy", "Baranskyi", "security", "&$#!@");
+//    }
+
     @Test(expected = NumberFormatException.class)
     public void testStuff_By_NumberFormatException(){
 
         worker = new Worker("Vasiliy", "Baranskyi", "security", "qwed");
         worker = new Worker("Vasiliy", "Baranskyi", "security", "112.0");
         worker = new Worker("Vasiliy", "Baranskyi", "security", "&$#!@");
-
     }
+
+
 
     @Test
     public void setWorker_test(){
