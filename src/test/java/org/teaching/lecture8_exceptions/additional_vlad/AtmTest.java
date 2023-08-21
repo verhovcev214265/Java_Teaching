@@ -15,9 +15,41 @@ package org.teaching.lecture8_exceptions.additional_vlad;
 В случае успешного пополнения выведите текущий баланс счета.
  */
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mockito;
 
-public class BankAccountTest {
+import java.util.Scanner;
 
+import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertThrows;
+
+public class AtmTest {
+
+    private Scanner mockScan;
+    private Atm atm;
     private BankAccount bankAccount;
+
+    @Before
+    public void setUp(){
+        mockScan = Mockito.mock(Scanner.class);
+
+        atm = new Atm();
+        atm.setScan(mockScan);
+
+        bankAccount.setScan(mockScan);
+    }
+
+    @Test
+    public void checkDepositAction() throws NegativeAmountException {
+        atm.bankAccountFactory(bankAccount);
+
+        when(mockScan.nextInt()).thenReturn(1);
+        when(mockScan.next()).thenReturn("1000.05");
+
+        Assert.assertEquals(1000.5, bankAccount.getCurrent(), 0.001);
+    }
+
 
 }

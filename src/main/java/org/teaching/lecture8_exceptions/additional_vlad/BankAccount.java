@@ -46,6 +46,7 @@ public class BankAccount {
             }
             else throw new InsufficientFundsException();
         }else throw new NegativeAmountException();
+
     }
 
     public double getCurrent() {
@@ -55,5 +56,6 @@ public class BankAccount {
     public void setScan(Scanner scan) {
         this.scan = scan;
     }
+
 }
 

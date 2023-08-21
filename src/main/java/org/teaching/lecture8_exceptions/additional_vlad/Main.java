@@ -70,6 +70,7 @@ public class Main {
         } catch (InputMismatchException e) {
             LOGGER.error("When you choose the action you must enter only numbers!");
         }
+        scan.close();
     }
 
 }
