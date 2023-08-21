@@ -96,7 +96,7 @@ public class StuffTest {
 
     @Test
     public void sortCheck(){
-        Arrays.sort(staff.getWorkers());
+
 
         expected = Arrays.asList(
                 "Worker - name: Olek, surname: Aorianinsky, position: develope, year of entry into work: 2019.",
@@ -105,6 +105,8 @@ public class StuffTest {
                 "Worker - name: Ol, surname: Dorianins, position: develo, year of entry into work: 2021.",
                 "Worker - name: Oleks, surname: Horianinskyi, position: developer, year of entry into work: 2018."
         );
+
+        Arrays.sort(staff.getWorkers());
 
         for (int i = 0; i < staff.getWorkers().length; i++) {
             Assert.assertEquals(expected.get(i), staff.getWorkers()[i].toString());
