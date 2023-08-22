@@ -15,46 +15,38 @@ package org.teaching.lecture8_exceptions.additional_vlad;
 В случае успешного пополнения выведите текущий баланс счета.
  */
 
-import java.util.Scanner;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class BankAccount {
 
-    private double current = 0.0;
-    private Scanner scan;
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(BankAccount.class);
+    private double currentBalance = 0.0;
 
     public double deposit(String input) throws NegativeAmountException, NumberFormatException {
         double amount = Double.parseDouble(input);
 
-        if (amount > 0.0) current += amount;
+        if (amount > 0.0) currentBalance += amount;
         else throw new NegativeAmountException();
 
-        return current;
+        return currentBalance;
     }
 
     public double withdrawal(String input) throws InsufficientFundsException, NegativeAmountException, NumberFormatException{
         double cash = Double.parseDouble(input);
 
-        if (cash > 0.0){
-            if (cash <= current){
-                current -= cash;
-                return cash;
-            }
-            else throw new InsufficientFundsException();
-        }else throw new NegativeAmountException();
-
+        if (cash < 0.0){
+            throw new NegativeAmountException();
+        }else if (cash > currentBalance){
+            throw new InsufficientFundsException();
+        }else {
+            currentBalance -= cash;
+            return cash;
+        }
     }
 
-    public double getCurrent() {
-        return current;
+    public double getCurrentBalance() {
+        return currentBalance;
     }
 
-    public void setScan(Scanner scan) {
-        this.scan = scan;
+    public void setCurrentBalance(double currentBalance) {
+        this.currentBalance = currentBalance;
     }
 
 }

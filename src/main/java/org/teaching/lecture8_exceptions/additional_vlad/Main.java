@@ -46,15 +46,15 @@ public class Main {
                             String inputCash = scan.next();
                             bankAccount.deposit(inputCash);
                             LOGGER.info("\nYou put in your account: " + inputCash + ".\n" +
-                                    "Your current balance = " + bankAccount.getCurrent());
+                                    "Your current balance = " + bankAccount.getCurrentBalance());
                             break;
                         case 2:
                             LOGGER.info("Enter amount:");
                             String outputCash = scan.next();
                             bankAccount.withdrawal(outputCash);
                             LOGGER.info(
-                                    "\nYou have withdraw: " + outputCash + ".\n" +
-                                            "Your current balance = " + bankAccount.getCurrent());
+                                    "\nTake your money: " + outputCash + ".\n" +
+                                            "Your current balance = " + bankAccount.getCurrentBalance());
                             break;
                         default:
                             LOGGER.info("Bye - bye!");
