@@ -58,22 +58,22 @@ public class MarketplaceTest {
                 "Price - product name: Smartphones, store name: Samsung, price = 10000."
         );
 
-        for (int i = 0; i < marketplace.getPrices().length; i++) {
-            Assert.assertEquals(expected.get(i), marketplace.getPrices()[i].toString());
+        for (int i = 0; i < marketplace.getStores().length; i++) {
+            Assert.assertEquals(expected.get(i), marketplace.getStores()[i].toString());
         }
     }
 
     @Test
     public void sortCheck(){
-        Arrays.sort(marketplace.getPrices());
+        Arrays.sort(marketplace.getStores());
 
         expected = Arrays.asList(
                 "Price - product name: IPhones, store name: Apple, price = 12000.",
                 "Price - product name: Smartphones, store name: Samsung, price = 10000."
         );
 
-        for (int i = 0; i < marketplace.getPrices().length; i++) {
-            Assert.assertEquals(expected.get(i), marketplace.getPrices()[i].toString());
+        for (int i = 0; i < marketplace.getStores().length; i++) {
+            Assert.assertEquals(expected.get(i), marketplace.getStores()[i].toString());
         }
     }
 
