@@ -15,55 +15,31 @@ package org.teaching.lecture8_exceptions.itvdn.task3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Marketplace {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(Marketplace.class);
+    private static final Logger logger = LoggerFactory.getLogger(Marketplace.class);
 
     private final Price[] prices;
-    private int numbersOfPrices;
+    private Map<String, Price> pricesMap; // Key - storeName, Value - Price
+    private int numbersOfPrices = 2;
     private Scanner scan;
 
-    public Marketplace(int numbersOfPrices) {
-        if (numbersOfPrices > 2) {
-            LOGGER.error("The number of the stores shouldn't be more than 2 - shops. But you've entered: {}", numbersOfPrices);
-            throw new IllegalArgumentException("The number of the stores shouldn't be more than 2 - shops. But you've entered: " + numbersOfPrices);
-        }
-
+    public Marketplace() {
         prices = new Price[numbersOfPrices];
+        pricesMap = new HashMap<>();
     }
 
-    public void setPrice(Price stores) {
-        numbersOfPrices++;
-
-        if (numbersOfPrices > prices.length) {
-            LOGGER.error("You can't add another store because the array are full!");
-            return;
-        }
-
-        LOGGER.info("Enter the product name:");
-        String prodName = scan.next();
-
-        LOGGER.info("Enter the name of the store:");
-        String storeName = scan.next();
-
-        LOGGER.info("Enter price:");
-        int price = scan.nextInt();
-
-        this.prices[numbersOfPrices - 1] = new Price(prodName, storeName, price);
+    public void addPrice(Price price) {
+        pricesMap.put(price.getStoreName(), price);
     }
 
-    public String showGoods() {
-
-        LOGGER.info("Enter store name:");
+    public Price showPriceByStoreName() {
+        logger.info("Enter store name:");
         String storeName = scan.next();
-
-        for (Price price : prices) {
-            if (price.getStoreName().equals(storeName)) return price.getProductName();
-        }
-        LOGGER.error("Sorry but we haven't {} store in our marketplace!", storeName);
-        throw new IllegalArgumentException("Sorry but we haven't " + storeName + " store in our marketplace!");
+        return pricesMap.get(storeName);
     }
 
     public void setScan(Scanner scan) {
@@ -71,7 +47,6 @@ public class Marketplace {
     }
 
     public Price[] getPrices() {
-        return prices;
+        return pricesMap.values().toArray(new Price[pricesMap.size()]);
     }
-
 }

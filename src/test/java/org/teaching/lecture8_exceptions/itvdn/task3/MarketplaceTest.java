@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertThrows;
 
@@ -34,7 +35,7 @@ public class MarketplaceTest {
 
     @Before
     public void setUp() {
-        marketplace = new Marketplace(2);
+        marketplace = new Marketplace();
 
         mockScan = Mockito.mock(Scanner.class);
         marketplace.setScan(mockScan);
@@ -43,19 +44,18 @@ public class MarketplaceTest {
 
         when(mockScan.next()).thenReturn("Smartphones").thenReturn("Samsung");
         when(mockScan.nextInt()).thenReturn(10_000);
-        marketplace.setPrice(new Price("Smartphones", "Samsung", 10_000));
+        marketplace.addPrice(new Price("Smartphones", "Samsung", 10_000));
 
         when(mockScan.next()).thenReturn("IPhones").thenReturn("Apple");
         when(mockScan.nextInt()).thenReturn(12_000);
-        marketplace.setPrice(new Price("IPhones", "Apple", 12_000));
+        marketplace.addPrice(new Price("IPhones", "Apple", 12_000));
     }
 
     @Test
     public void setMarketplace_test() {
-
         expected = Arrays.asList(
-                "Price - product name: Smartphones, store name: Samsung, price = 10000.",
-                "Price - product name: IPhones, store name: Apple, price = 12000."
+                "Price - product name: IPhones, store name: Apple, price = 12000.",
+                "Price - product name: Smartphones, store name: Samsung, price = 10000."
         );
 
         for (int i = 0; i < marketplace.getPrices().length; i++) {
@@ -78,36 +78,21 @@ public class MarketplaceTest {
     }
 
     @Test
-    public void testMarketplace_By_IllegalArgument() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> marketplace = new Marketplace(3));
-
-        String expectedMessage = "The number of the stores shouldn't be more than 2 - shops. But you've entered: 3";
-        String actual = exception.getMessage();
-
-        Assert.assertEquals(expectedMessage, actual);
-    }
-
-    @Test
     public void testShowGoods_By_IllegalArgument(){
         when(mockScan.next()).thenReturn("LIDL");
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> marketplace.showGoods());
-
-        String expected = "Sorry but we haven't LIDL store in our marketplace!";
-        String actual = exception.getMessage();
-
-        Assert.assertEquals(expected, actual);
+        Price price = marketplace.showPriceByStoreName();
+        assertNull(price);
     }
 
     @Test
     public void showGoods_testA() {
         when(mockScan.next()).thenReturn("Samsung");
-        Assert.assertEquals("Smartphones", marketplace.showGoods());
+        Assert.assertEquals("Smartphones", marketplace.showPriceByStoreName().getProductName());
     }
 
     @Test
     public void showGoods_testB() {
         when(mockScan.next()).thenReturn("Apple");
-        Assert.assertEquals("IPhones", marketplace.showGoods());
+        Assert.assertEquals("IPhones", marketplace.showPriceByStoreName().getProductName());
     }
-
 }
