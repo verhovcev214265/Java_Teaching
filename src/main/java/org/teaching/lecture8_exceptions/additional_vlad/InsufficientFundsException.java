@@ -1,13 +1,14 @@
 package org.teaching.lecture8_exceptions.additional_vlad;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+public class InsufficientFundsException extends Exception {
+    public InsufficientFundsException() {
+    }
 
-public class InsufficientFundsException extends Exception{
+    public InsufficientFundsException(String message) {
+        super(message);
+    }
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(InsufficientFundsException.class);
-
-    public InsufficientFundsException(){
-        LOGGER.error("There are not enough founds in the your account!");
+    public InsufficientFundsException(Throwable cause) {
+        super(cause);
     }
 }

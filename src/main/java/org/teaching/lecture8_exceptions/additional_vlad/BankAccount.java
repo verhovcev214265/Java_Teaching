@@ -16,29 +16,32 @@ package org.teaching.lecture8_exceptions.additional_vlad;
  */
 
 public class BankAccount {
-
     private double currentBalance = 0.0;
 
-    public double deposit(String input) throws NegativeAmountException, NumberFormatException {
-        double amount = Double.parseDouble(input);
+    public double parse(String input) throws NumberFormatException {
+        return Double.parseDouble(input);
+    }
 
-        if (amount > 0.0) currentBalance += amount;
-        else throw new NegativeAmountException();
+    public double deposit(double amount) throws NegativeAmountException, NumberFormatException {
+        if (amount < 0) {
+            throw new NegativeAmountException("You tried to fill the account with a negative value is a very bad idea !!!");
+        }
 
+        currentBalance += amount;
         return currentBalance;
     }
 
-    public double withdrawal(String input) throws InsufficientFundsException, NegativeAmountException, NumberFormatException{
-        double cash = Double.parseDouble(input);
-
-        if (cash < 0.0){
+    public double withdrawal(double cash) throws InsufficientFundsException, NegativeAmountException, NumberFormatException {
+        if (cash < 0) {
             throw new NegativeAmountException();
-        }else if (cash > currentBalance){
-            throw new InsufficientFundsException();
-        }else {
-            currentBalance -= cash;
-            return cash;
         }
+
+        if (cash > currentBalance) {
+            throw new InsufficientFundsException("There are not enough founds in the your account!");
+        }
+
+        currentBalance -= cash;
+        return cash;
     }
 
     public double getCurrentBalance() {

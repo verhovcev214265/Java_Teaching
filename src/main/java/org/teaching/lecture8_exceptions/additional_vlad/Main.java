@@ -23,17 +23,15 @@ import org.slf4j.LoggerFactory;
 
 public class Main {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BankAccount.class);
+    private static final Logger logger = LoggerFactory.getLogger(BankAccount.class);
 
     public static void main(String[] args) {
         BankAccount bankAccount = new BankAccount();
-        Scanner scan = new Scanner(System.in);
-
         boolean exit = false;
 
-        try {
+        try (Scanner scan = new Scanner(System.in)) {
             while (!exit) {
-                LOGGER.info("Chose the action: \n" +
+                logger.info("Chose the action: \n" +
                         "Deposit money into the your account press 1. \n" +
                         "Cash withdrawal press 2.\n" +
                         "Exit press any button.");
@@ -42,35 +40,35 @@ public class Main {
                 try {
                     switch (action) {
                         case 1:
-                            LOGGER.info("Enter amount:");
+                            logger.info("Enter amount:");
                             String inputCash = scan.next();
-                            bankAccount.deposit(inputCash);
-                            LOGGER.info("\nYou put in your account: " + inputCash + ".\n" +
+                            double amount = bankAccount.parse(inputCash);
+                            bankAccount.deposit(amount);
+                            logger.info("\nYou put in your account: " + inputCash + ".\n" +
                                     "Your current balance = " + bankAccount.getCurrentBalance());
                             break;
                         case 2:
-                            LOGGER.info("Enter amount:");
+                            logger.info("Enter amount:");
                             String outputCash = scan.next();
-                            bankAccount.withdrawal(outputCash);
-                            LOGGER.info(
+                            double parsedCash = bankAccount.parse(outputCash);
+                            bankAccount.withdrawal(parsedCash);
+                            logger.info(
                                     "\nTake your money: " + outputCash + ".\n" +
                                             "Your current balance = " + bankAccount.getCurrentBalance());
                             break;
                         default:
-                            LOGGER.info("Bye - bye!");
+                            logger.info("Bye - bye!");
                             exit = true;
                             break;
                     }
                 } catch (NumberFormatException e) {
-                    LOGGER.error("You must enter only numbers!");
+                    logger.error("You must enter only numbers!");
                 } catch (NegativeAmountException | InsufficientFundsException e) {
-                    LOGGER.error(e.getMessage());
+                    logger.error(e.getMessage());
                 }
             }
         } catch (InputMismatchException e) {
-            LOGGER.error("When you choose the action you must enter only numbers!");
+            logger.error("When you choose the action you must enter only numbers!");
         }
-        scan.close();
     }
-
 }

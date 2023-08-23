@@ -1,8 +1,14 @@
 package org.teaching.lecture8_exceptions.additional_vlad;
 
-public class NegativeAmountException extends Exception{
+public class NegativeAmountException extends Exception {
+    public NegativeAmountException() {
+    }
 
-    public NegativeAmountException(){
-        super("You tried to fill the account with a negative value is a very bad idea !!!");
+    public NegativeAmountException(String message) {
+        super(message);
+    }
+
+    public NegativeAmountException(Throwable cause) {
+        super(cause);
     }
 }
