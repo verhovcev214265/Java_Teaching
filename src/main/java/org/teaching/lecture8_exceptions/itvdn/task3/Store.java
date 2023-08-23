@@ -7,25 +7,25 @@ package org.teaching.lecture8_exceptions.itvdn.task3;
  стоимость товара в гривнах.
  */
 
-public class Price implements Comparable<Price>{
+public class Store implements Comparable<Store>{
 
     private final String productName;
-    private final String storeName;
+    private final String name;
     private final int price;
 
-    public Price(String productName, String store, int price) {
+    public Store(String productName, String store, int price) {
         this.productName = productName;
-        this.storeName = store;
+        this.name = store;
         this.price = price;
     }
 
     @Override
-    public int compareTo(Price other){
-        return this.storeName.compareTo(other.storeName);
+    public int compareTo(Store other){
+        return this.name.compareTo(other.name);
     }
 
-    public String getStoreName() {
-        return storeName;
+    public String getName() {
+        return name;
     }
 
     public String getProductName() {
@@ -36,7 +36,7 @@ public class Price implements Comparable<Price>{
     public String toString(){
         return "Price - " +
                 "product name: " + productName +
-                ", store name: " + storeName +
+                ", store name: " + name +
                 ", price = " + price + ".";
     }
 

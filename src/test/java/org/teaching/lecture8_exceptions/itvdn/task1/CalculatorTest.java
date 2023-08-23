@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static org.mockito.Mockito.*;
@@ -18,7 +17,6 @@ public class CalculatorTest {
     @Before
     public void setUp(){
         mockScan = Mockito.mock(Scanner.class);
-
         calculator = new Calculator();
         calculator.setScan(mockScan);
     }
@@ -27,7 +25,6 @@ public class CalculatorTest {
     public void add_test(){
         when(mockScan.nextDouble()).thenReturn(12.5).thenReturn(2.5);
         Assert.assertEquals(15.0, calculator.add(), 0.001);
-
         mockScan.close();
     }
 
@@ -35,7 +32,6 @@ public class CalculatorTest {
     public void sub_test(){
         when(mockScan.nextDouble()).thenReturn(32.4).thenReturn(2.1);
         Assert.assertEquals(30.3, calculator.sub(), 0.001);
-
         mockScan.close();
     }
 
@@ -43,7 +39,6 @@ public class CalculatorTest {
     public void mul_test(){
         when(mockScan.nextDouble()).thenReturn(20.0).thenReturn(5.0);
         Assert.assertEquals(100.0, calculator.mul(), 0.001);
-
         mockScan.close();
     }
 
@@ -51,7 +46,6 @@ public class CalculatorTest {
     public void div_test(){
         when(mockScan.nextDouble()).thenReturn(12.6).thenReturn(2.0);
         Assert.assertEquals(6.3, calculator.div(), 0.001);
-
         mockScan.close();
     }
 
@@ -59,8 +53,6 @@ public class CalculatorTest {
     public void check_divByZero(){
         when(mockScan.nextDouble()).thenReturn(10.0).thenReturn(0.0);
         calculator.div();
-//      Assert.assertEquals("Due you mustn't divided by zero!", calculator.div());
-
         mockScan.close();
     }
 }

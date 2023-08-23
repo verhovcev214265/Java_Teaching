@@ -18,7 +18,6 @@ public class Main {
         Calculator calculator = new Calculator();
 
         boolean exit = false;
-        double result;
 
         try (Scanner scan = new Scanner(System.in)) {
             calculator.setScan(scan);
@@ -38,13 +37,13 @@ public class Main {
                             logger.info("Addition: {}", calculator.add());
                             break;
                         case 2:
-                            logger.info("Substraction: {}", calculator.sub());
+                            logger.info("Subtraction: {}", calculator.sub());
                             break;
                         case 3:
-                            logger.info("Mul: {}", calculator.mul());
+                            logger.info("Multiplication: {}", calculator.mul());
                             break;
                         case 4:
-                            logger.info("Div: {}", calculator.div());
+                            logger.info("Division: {}", calculator.div());
                             break;
                         default:
                             logger.info("Bye - bye!");

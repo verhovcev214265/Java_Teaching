@@ -22,21 +22,21 @@ import java.util.Scanner;
 public class Marketplace {
     private static final Logger logger = LoggerFactory.getLogger(Marketplace.class);
 
-    private final Price[] prices;
-    private Map<String, Price> pricesMap; // Key - storeName, Value - Price
+    private final Store[] prices;
+    private Map<String, Store> pricesMap; // Key - storeName, Value - Price
     private int numbersOfPrices = 2;
     private Scanner scan;
 
     public Marketplace() {
-        prices = new Price[numbersOfPrices];
+        prices = new Store[numbersOfPrices];
         pricesMap = new HashMap<>();
     }
 
-    public void addPrice(Price price) {
-        pricesMap.put(price.getStoreName(), price);
+    public void addPrice(Store price) {
+        pricesMap.put(price.getName(), price);
     }
 
-    public Price showPriceByStoreName() {
+    public Store showPriceByStoreName() {
         logger.info("Enter store name:");
         String storeName = scan.next();
         return pricesMap.get(storeName);
@@ -46,7 +46,7 @@ public class Marketplace {
         this.scan = scan;
     }
 
-    public Price[] getPrices() {
-        return pricesMap.values().toArray(new Price[pricesMap.size()]);
+    public Store[] getPrices() {
+        return pricesMap.values().toArray(new Store[pricesMap.size()]);
     }
 }

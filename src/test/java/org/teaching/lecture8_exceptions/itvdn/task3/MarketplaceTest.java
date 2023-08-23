@@ -44,11 +44,11 @@ public class MarketplaceTest {
 
         when(mockScan.next()).thenReturn("Smartphones").thenReturn("Samsung");
         when(mockScan.nextInt()).thenReturn(10_000);
-        marketplace.addPrice(new Price("Smartphones", "Samsung", 10_000));
+        marketplace.addPrice(new Store("Smartphones", "Samsung", 10_000));
 
         when(mockScan.next()).thenReturn("IPhones").thenReturn("Apple");
         when(mockScan.nextInt()).thenReturn(12_000);
-        marketplace.addPrice(new Price("IPhones", "Apple", 12_000));
+        marketplace.addPrice(new Store("IPhones", "Apple", 12_000));
     }
 
     @Test
@@ -80,7 +80,7 @@ public class MarketplaceTest {
     @Test
     public void testShowGoods_By_IllegalArgument(){
         when(mockScan.next()).thenReturn("LIDL");
-        Price price = marketplace.showPriceByStoreName();
+        Store price = marketplace.showPriceByStoreName();
         assertNull(price);
     }
 
