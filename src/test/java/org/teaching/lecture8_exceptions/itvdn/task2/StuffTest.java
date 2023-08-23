@@ -31,19 +31,19 @@ public class StuffTest {
         expected = new ArrayList<>();
 
         when(mockScan.next()).thenReturn("Oleks").thenReturn("Horianinskyi").thenReturn("developer").thenReturn("2018");
-        staff.setWorker(new Worker("Oleks", "Horianinskyi", "developer", "2018"));
+        staff.setWorker(new Worker("Oleks", "Horianinskyi", "developer", 2018));
 
         when(mockScan.next()).thenReturn("Olek").thenReturn("Aorianinsky").thenReturn("develope").thenReturn("2019");
-        staff.setWorker(new Worker("Olek", "Aorianinsky", "develope", "2019"));
+        staff.setWorker(new Worker("Olek", "Aorianinsky", "develope", 2019));
 
         when(mockScan.next()).thenReturn("Ole").thenReturn("Corianinsk").thenReturn("develop").thenReturn("2020");
-        staff.setWorker(new Worker("Ole", "Corianinsk", "develop", "2020"));
+        staff.setWorker(new Worker("Ole", "Corianinsk", "develop", 2020));
 
         when(mockScan.next()).thenReturn("Ol").thenReturn("Dorianins").thenReturn("develo").thenReturn("2021");
-        staff.setWorker(new Worker("Ol", "Dorianins", "develo", "2021"));
+        staff.setWorker(new Worker("Ol", "Dorianins", "develo", 2021));
 
         when(mockScan.next()).thenReturn("O").thenReturn("Borianin").thenReturn("devel").thenReturn("2022");
-        staff.setWorker(new Worker("O", "Borianin", "devel", "2022"));
+        staff.setWorker(new Worker("O", "Borianin", "devel", 2022));
     }
 
     @Test
@@ -67,16 +67,6 @@ public class StuffTest {
 //        worker = new Worker("Vasiliy", "Baranskyi", "security", "112.0");
 //        worker = new Worker("Vasiliy", "Baranskyi", "security", "&$#!@");
 //    }
-
-    @Test(expected = NumberFormatException.class)
-    public void testStuff_By_NumberFormatException(){
-
-        worker = new Worker("Vasiliy", "Baranskyi", "security", "qwed");
-        worker = new Worker("Vasiliy", "Baranskyi", "security", "112.0");
-        worker = new Worker("Vasiliy", "Baranskyi", "security", "&$#!@");
-    }
-
-
 
     @Test
     public void setWorker_test(){

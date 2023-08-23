@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Staff {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Staff.class);
+    private static final Logger logger = LoggerFactory.getLogger(Staff.class);
 
     private final Worker[] workers;
     private int numbersOfWorkers;
@@ -26,7 +26,7 @@ public class Staff {
 
     public Staff(int numbersOfWorkers){
         if (numbersOfWorkers > 5){
-            LOGGER.error("The number of the workers shouldn't be more than 5 - persons. You've entered: {}", numbersOfWorkers);
+            logger.error("The number of the workers shouldn't be more than 5 - persons. You've entered: {}", numbersOfWorkers);
             throw new IllegalArgumentException("The number of the workers shouldn't be more than 5 - persons. You've entered: " + numbersOfWorkers);
         }
 
@@ -37,34 +37,34 @@ public class Staff {
         numbersOfWorkers++;
 
         if (numbersOfWorkers > workers.length){
-            LOGGER.error("You can't add another worker because array of workers are full!");
+            logger.error("You can't add another worker because array of workers are full!");
             return;
         }
 
-        LOGGER.info("Enter name:");
+        logger.info("Enter name:");
         String name = scan.next();
 
-        LOGGER.info("Enter surname:");
+        logger.info("Enter surname:");
         String surname = scan.next();
 
-        LOGGER.info("Enter position:");
+        logger.info("Enter position:");
         String position = scan.next();
 
-        LOGGER.info("Enter year of starting work:");
+        logger.info("Enter year of starting work:");
         String year = scan.next();
 
-        this.workers[numbersOfWorkers - 1] = new Worker(name, surname, position, year);
+        this.workers[numbersOfWorkers - 1] = new Worker(name, surname, position, Integer.parseInt(year));
     }
 
     public List<String> calculateExperience(int requiredExperience){
 
         List<String> relevantWorkers = new ArrayList<>();
 
-        Year currentYear = Year.now();
+        int currentYear = Year.now().getValue();
 
         for (Worker worker : workers) {
 
-            long currentExperience = ChronoUnit.YEARS.between(worker.getStartYear(), currentYear);
+            int currentExperience = currentYear - worker.getStartYear();
 
             if (currentExperience > requiredExperience) {
                 relevantWorkers.add(worker.getSurname());

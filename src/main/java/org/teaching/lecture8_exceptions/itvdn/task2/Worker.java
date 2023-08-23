@@ -13,15 +13,13 @@ public class Worker implements Comparable<Worker>{
     private final String name;
     private final String surname;
     private final String position;
-    private final Year startYear;
+    private final int startYear;
 
-    public Worker(String name, String sureName, String position, String yearIntoWork) {
+    public Worker(String name, String sureName, String position, int startYear) {
         this.name = name;
         this.surname = sureName;
         this.position = position;
-
-        int startYear = Integer.parseInt(yearIntoWork);
-        this.startYear = Year.of(startYear);
+        this.startYear = startYear;
     }
 
     @Override
@@ -29,7 +27,7 @@ public class Worker implements Comparable<Worker>{
         return this.surname.compareTo(other.surname);
     }
 
-    public Year getStartYear() {
+    public int getStartYear() {
         return startYear;
     }
 
@@ -45,5 +43,4 @@ public class Worker implements Comparable<Worker>{
                 ", position: " + position +
                 ", year of entry into work: " + startYear + ".";
     }
-
 }
