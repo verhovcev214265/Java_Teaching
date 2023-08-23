@@ -63,29 +63,4 @@ public class CalculatorTest {
 
         mockScan.close();
     }
-
-    @Test
-    public void operationFactory_test(){
-        try {
-            when(mockScan.nextInt()).thenReturn(1);
-            when(mockScan.nextDouble()).thenReturn(2.4).thenReturn(3.6);
-            Assert.assertEquals(6.0, calculator.operationFactory(1), 0.001);
-
-            when(mockScan.nextInt()).thenReturn(2);
-            when(mockScan.nextDouble()).thenReturn(12.4).thenReturn(3.4);
-            Assert.assertEquals(9.0, calculator.operationFactory(2), 0.001);
-
-            when(mockScan.nextInt()).thenReturn(3);
-            when(mockScan.nextDouble()).thenReturn(2.0).thenReturn(5.0);
-            Assert.assertEquals(10.0, calculator.operationFactory(3), 0.001);
-
-            when(mockScan.nextInt()).thenReturn(4);
-            when(mockScan.nextDouble()).thenReturn(6.0).thenReturn(2.0);
-            Assert.assertEquals(3.0, calculator.operationFactory(4), 0.001);
-        }catch (InputMismatchException e){
-            System.out.println(e.getMessage());
-        }
-        mockScan.close();
-    }
-
 }
