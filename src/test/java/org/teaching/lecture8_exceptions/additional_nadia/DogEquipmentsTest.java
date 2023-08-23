@@ -10,7 +10,6 @@ import org.junit.Before;
 import java.util.Scanner;
 
 public class DogEquipmentsTest {
-
     private DogEquipments dogEquipments;
     private Scanner mockScan;
 
@@ -55,31 +54,31 @@ public class DogEquipmentsTest {
     }
 
     @Test
-    public void walking_test() throws OwnException{
+    public void walking_test() throws DogException {
         dogEquipments.setCollar(true);
         dogEquipments.setLead(true);
 
        Assert.assertEquals("Your dog has all equipments and can to walking.", dogEquipments.walking());
     }
 
-    @Test(expected = OwnException.class)
-    public void shouldReturnOwnException_When_Collar_False() throws OwnException {
+    @Test(expected = DogException.class)
+    public void shouldReturnOwnException_When_Collar_False() throws DogException {
         dogEquipments.setCollar(false);
         dogEquipments.setLead(true);
 
         dogEquipments.walking();
     }
 
-    @Test(expected = OwnException.class)
-    public void shouldReturnOwnException_When_Lead_False() throws OwnException {
+    @Test(expected = DogException.class)
+    public void shouldReturnOwnException_When_Lead_False() throws DogException {
         dogEquipments.setCollar(true);
         dogEquipments.setLead(false);
 
         dogEquipments.walking();
     }
 
-    @Test(expected = OwnException.class)
-    public void shouldReturnOwnException_When_CollarAndLead_False() throws OwnException {
+    @Test(expected = DogException.class)
+    public void shouldReturnOwnException_When_CollarAndLead_False() throws DogException {
         dogEquipments.setCollar(false);
         dogEquipments.setLead(false);
 

@@ -12,15 +12,14 @@ import java.util.Scanner;
  */
 
 public class DogEquipments {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(DogEquipments.class);
+    private static final Logger logger = LoggerFactory.getLogger(DogEquipments.class);
 
     private Scanner scan;
     private boolean collar;
     private boolean lead;
 
     public void takeCollar() {
-        LOGGER.info("Would you like to take a collar by your dog?\n"
+        logger.info("Would you like to take a collar by your dog?\n"
                 + "if yes press 'y', no any button.");
         String answer = scan.next();
 
@@ -28,17 +27,19 @@ public class DogEquipments {
     }
 
     public void takeLead() {
-        LOGGER.info("Would you like to take a lead by your dog?\n" +
+        logger.info("Would you like to take a lead by your dog?\n" +
                 "if yes press 'y', no any button.");
         String answer = scan.next();
 
         if (answer.equals("y".toLowerCase())) lead = true;
     }
 
-    public String walking() throws OwnException {
-        if (!isCollar() || !isLead())
-            throw new OwnException("Your dog haven't all equipments, and can be dangerous for people!");
-        else return "Your dog has all equipments and can to walking.";
+    public String walking() throws DogException {
+        if (!isCollar() || !isLead()) {
+            throw new DogException("Your dog haven't all equipments, and can be dangerous for people!");
+        }
+
+        return "Your dog has all equipments and can to walking.";
     }
 
     public void setScan(Scanner scan){
@@ -60,5 +61,4 @@ public class DogEquipments {
     public void setLead(boolean lead) {
         this.lead = lead;
     }
-
 }
