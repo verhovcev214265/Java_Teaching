@@ -24,7 +24,6 @@ import java.util.Scanner;
 
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
-import static org.junit.Assert.assertThrows;
 
 public class MarketplaceTest {
 
@@ -44,11 +43,11 @@ public class MarketplaceTest {
 
         when(mockScan.next()).thenReturn("Smartphones").thenReturn("Samsung");
         when(mockScan.nextInt()).thenReturn(10_000);
-        marketplace.addPrice(new Store("Smartphones", "Samsung", 10_000));
+        marketplace.addStore(new Store("Smartphones", "Samsung", 10_000));
 
         when(mockScan.next()).thenReturn("IPhones").thenReturn("Apple");
         when(mockScan.nextInt()).thenReturn(12_000);
-        marketplace.addPrice(new Store("IPhones", "Apple", 12_000));
+        marketplace.addStore(new Store("IPhones", "Apple", 12_000));
     }
 
     @Test
@@ -80,19 +79,19 @@ public class MarketplaceTest {
     @Test
     public void testShowGoods_By_IllegalArgument(){
         when(mockScan.next()).thenReturn("LIDL");
-        Store price = marketplace.showPriceByStoreName();
+        Store price = marketplace.showStoreByStoreName();
         assertNull(price);
     }
 
     @Test
     public void showGoods_testA() {
         when(mockScan.next()).thenReturn("Samsung");
-        Assert.assertEquals("Smartphones", marketplace.showPriceByStoreName().getProductName());
+        Assert.assertEquals("Smartphones", marketplace.showStoreByStoreName().getProductName());
     }
 
     @Test
     public void showGoods_testB() {
         when(mockScan.next()).thenReturn("Apple");
-        Assert.assertEquals("IPhones", marketplace.showPriceByStoreName().getProductName());
+        Assert.assertEquals("IPhones", marketplace.showStoreByStoreName().getProductName());
     }
 }

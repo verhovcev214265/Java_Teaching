@@ -18,7 +18,6 @@ import java.util.Scanner;
 
 public class Staff {
     private static final Logger logger = LoggerFactory.getLogger(Staff.class);
-
     private final Worker[] workers;
     private int numbersOfWorkers;
     private Scanner scan;

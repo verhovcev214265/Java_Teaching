@@ -32,11 +32,11 @@ public class Marketplace {
         storeMap = new HashMap<>();
     }
 
-    public void addPrice(Store price) {
+    public void addStore(Store price) {
         storeMap.put(price.getName(), price);
     }
 
-    public Store showPriceByStoreName() {
+    public Store showStoreByStoreName() {
         logger.info("Enter store name:");
         String storeName = scan.next();
         return storeMap.get(storeName);
