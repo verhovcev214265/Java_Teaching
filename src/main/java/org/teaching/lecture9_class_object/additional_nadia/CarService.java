@@ -14,8 +14,7 @@ public class CarService {
         return cars;
     }
 
-    // a) список марок автомобилей из созданного массива объектов;
-    public List<String> allCars() {
+    public List<String> marksOfAllCars() {
         List<String> result = new ArrayList<>();
 
         for (Car car : cars) {
@@ -24,7 +23,6 @@ public class CarService {
         return result;
     }
 
-    // b) список автомобилей, которые эксплуатируются больше n лет;
     public List<Car> usedCars(int years) {
         List<Car> result = new ArrayList<>();
 
@@ -38,7 +36,6 @@ public class CarService {
         return result;
     }
 
-    // c) список автомобилей заданного года выпуска, цена которых больше указанной.
     public List<Car> carsOfNeededPrice(int inputYear, double price){
         List<Car> result = new ArrayList<>();
 
@@ -50,10 +47,6 @@ public class CarService {
         return result;
     }
 
-    /*
-    d) количество одинаковых автомобилей сравнивая с первым автомобилем (который помещен в массив)
-    и саму характеристику автомобиля (используя toString())
-     */
     public int similarCars(){
         int result = 1;
         for (int i = 0; i < (cars.length - 1); i++) {

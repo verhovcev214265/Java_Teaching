@@ -22,6 +22,8 @@ public class CarServiceTest {
 
     @Before
     public void setUp(){
+        carService = new CarService();
+
         carService.setCars(
                 new Car[]{
                         new Car(1, "Opel", "Cadet", 2010, "red", 500.0, 111),
@@ -33,12 +35,38 @@ public class CarServiceTest {
     }
 
     @Test
-    public void shouldReturn_MarksOfAllCars_FromTheArray(){
+    public void marksOfAllCars_test(){
         List<String> expected = Arrays.asList("Opel", "Opel", "Mercedes", "BMW");
-        List<String> actual = carService.allCars();
-
-        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expected, carService.marksOfAllCars());
     }
 
+    @Test
+    public void usedCars_test(){
+        List<Car> expected = Arrays.asList(
+                new Car(1, "Opel", "Cadet", 2010, "red", 500.0, 111),
+                new Car(1, "Opel", "Cadet", 2010, "red", 500.0, 111),
+                new Car(2, "Mercedes", "E300", 2015, "black", 2500.0, 222)
+        );
+        Assert.assertEquals(expected, carService.usedCars(7));
+    }
 
+    @Test
+    public void carsOfNeededPrice_test(){
+        List<Car> expected = Arrays.asList(
+                new Car(1, "Opel", "Cadet", 2010, "red", 500.0, 111),
+                new Car(1, "Opel", "Cadet", 2010, "red", 500.0, 111)
+        );
+        Assert.assertEquals(expected, carService.carsOfNeededPrice(2010, 499.99));
+    }
+
+    @Test
+    public void shouldReturnEmptyList_WhenCarWithPutParameters_DoesNotExistIntoTheList(){
+        List<Car> expected = new ArrayList<>();
+        Assert.assertEquals(expected, carService.carsOfNeededPrice(2023, 500_000.03));
+    }
+
+    @Test
+    public void similarCarsTest(){
+        Assert.assertEquals(2, carService.similarCars());
+    }
 }
