@@ -28,9 +28,6 @@ d) количество одинаковых автомобилей сравни
 пока пользователь выполнить выход из приложения.
  */
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class Car {
@@ -44,8 +41,7 @@ public class Car {
     private double price;
     private int registerNumber;
 
-    public Car() {
-    }
+    public Car() {}
 
     public Car(int id, String mark, String model, int yearOfProduction, String color, double price, int registerNumber) {
         this.id = id;
@@ -57,52 +53,6 @@ public class Car {
         this.price = price;
         this.registerNumber = registerNumber;
     }
-
-    // a) список марок автомобилей из созданного массива объектов;
-    public List<Car> allCars(Car[] cars) {
-        return Arrays.asList(cars);
-    }
-
-    // b) список автомобилей, которые эксплуатируются больше n лет;
-    public List<Car> usedCars(Car[] cars, int years) throws IllegalArgumentException{
-        List<Car> output = new ArrayList<>();
-
-        int currentYear = 2023;
-
-        for (Car car : cars) {
-            if (currentYear - car.getYearOfProduction() > years) {
-                output.add(car);
-            }
-        }
-        return output;
-    }
-
-    // c) список автомобилей заданного года выпуска, цена которых больше указанной.
-    public List<Car> carsOfNeededPrice(Car[] cars, int inputYear, double price) throws IllegalArgumentException{
-        List<Car> output = new ArrayList<>();
-
-        for (Car car : cars) {
-            if (car.getYearOfProduction() == inputYear && car.getPrice() > price) {
-                output.add(car);
-            }
-        }
-        return output;
-    }
-
-    /*
-    d) количество одинаковых автомобилей сравнивая с первым автомобилем (который помещен в массив)
-    и саму характеристику автомобиля (используя toString())
-     */
-    public int similarCars(Car[] cars){
-        int temp = 1;
-        for (int i = 0; i < (cars.length - 1); i++) {
-            if (cars[i].equals(cars[i + 1])){
-                temp++;
-            }
-        }
-        return temp;
-    }
-
 
     public int getId() {
         return id;

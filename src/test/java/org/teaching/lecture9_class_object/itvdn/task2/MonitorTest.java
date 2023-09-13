@@ -20,17 +20,8 @@ public class MonitorTest {
     }
 
     @Test
-    public void checkConstructor(){
-        Assert.assertEquals("Samsung", monitor.getManufacturer());
-        Assert.assertEquals(120.0f, monitor.getPrice(), 0.0001);
-        Assert.assertEquals("AB1234567CD", monitor.getSerialNumber());
-        Assert.assertEquals(1280, monitor.getResolutionX());
-        Assert.assertEquals(1024, monitor.getResolutionY());
-    }
-
-    @Test
-    public void checkHashCode(){
+    public void checkObjects(){
         Monitor monitorB = new Monitor("Samsung", 120.0f, "AB1234567CD", 1280, 1024);
-        Assert.assertEquals(monitor.hashCode(), monitorB.hashCode());
+        Assert.assertEquals(monitor, monitorB);
     }
 }

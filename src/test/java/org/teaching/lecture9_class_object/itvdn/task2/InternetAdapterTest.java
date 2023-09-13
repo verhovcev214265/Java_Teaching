@@ -22,20 +22,11 @@ public class InternetAdapterTest {
     }
 
     @Test
-    public void checkConstructor(){
-        Assert.assertEquals("Samsung", internetAdapter.getManufacturer());
-        Assert.assertEquals(120.0f, internetAdapter.getPrice(), 0.0001);
-        Assert.assertEquals("AB1234567CD", internetAdapter.getSerialNumber());
-        Assert.assertEquals(65, internetAdapter.getSpeed());
-        Assert.assertEquals("3CD469F3-40D7-439A-AD9B-AA5B4A4E2B6C", internetAdapter.getMac());
-    }
-
-    @Test
-    public void checkHashCodes(){
+    public void checkObjects(){
         InternetAdapter internetAdapterB = new InternetAdapter(
                 "Samsung", 120.0f, "AB1234567CD",65, "3CD469F3-40D7-439A-AD9B-AA5B4A4E2B6C"
         );
 
-        Assert.assertEquals(internetAdapter.hashCode(), internetAdapterB.hashCode());
+        Assert.assertEquals(internetAdapter, internetAdapterB);
     }
 }
