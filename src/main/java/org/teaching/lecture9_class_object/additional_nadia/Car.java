@@ -28,6 +28,9 @@ d) количество одинаковых автомобилей сравни
 пока пользователь выполнить выход из приложения.
  */
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class Car {
@@ -36,7 +39,8 @@ public class Car {
     private String mark;
     private String model;
     private int yearOfProduction;
-    private Colors color;
+    private String color;
+    //  private Colors color;
     private double price;
     private int registerNumber;
 
@@ -48,10 +52,57 @@ public class Car {
         this.mark = mark;
         this.model = model;
         this.yearOfProduction = yearOfProduction;
-        this.color = Colors.valueOf(color.toLowerCase().replaceAll("[^A-Za-z]+", ""));
+        this.color = color;
+//      this.color = Colors.valueOf(color.toLowerCase().replaceAll("[^A-Za-z]+", ""));
         this.price = price;
         this.registerNumber = registerNumber;
     }
+
+    // a) список марок автомобилей из созданного массива объектов;
+    public List<Car> allCars(Car[] cars) {
+        return Arrays.asList(cars);
+    }
+
+    // b) список автомобилей, которые эксплуатируются больше n лет;
+    public List<Car> usedCars(Car[] cars, int years) throws IllegalArgumentException{
+        List<Car> output = new ArrayList<>();
+
+        int currentYear = 2023;
+
+        for (Car car : cars) {
+            if (currentYear - car.getYearOfProduction() > years) {
+                output.add(car);
+            }
+        }
+        return output;
+    }
+
+    // c) список автомобилей заданного года выпуска, цена которых больше указанной.
+    public List<Car> carsOfNeededPrice(Car[] cars, int inputYear, double price) throws IllegalArgumentException{
+        List<Car> output = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getYearOfProduction() == inputYear && car.getPrice() > price) {
+                output.add(car);
+            }
+        }
+        return output;
+    }
+
+    /*
+    d) количество одинаковых автомобилей сравнивая с первым автомобилем (который помещен в массив)
+    и саму характеристику автомобиля (используя toString())
+     */
+    public int similarCars(Car[] cars){
+        int temp = 1;
+        for (int i = 0; i < (cars.length - 1); i++) {
+            if (cars[i].equals(cars[i + 1])){
+                temp++;
+            }
+        }
+        return temp;
+    }
+
 
     public int getId() {
         return id;
@@ -85,11 +136,11 @@ public class Car {
         this.yearOfProduction = yearOfProduction;
     }
 
-    public Colors getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Colors color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -115,10 +166,10 @@ public class Car {
                 "id = " + id +
                 ", mark = '" + mark +
                 ", model = '" + model +
-                ", yearOfProduction = " + yearOfProduction +
+                ".yearOfProduction = " + yearOfProduction +
                 ", color = " + color +
                 ", price = " + price +
-                ", registerNumber = " + registerNumber;
+                ", registerNumber = " + registerNumber + "\n";
     }
 
     @Override
@@ -127,12 +178,11 @@ public class Car {
         if (!(other instanceof Car)) return false;
         Car car = (Car) other;
         return id == car.id && yearOfProduction == car.yearOfProduction && Double.compare(car.price, price) == 0 &&
-                registerNumber == car.registerNumber && mark.equals(car.mark) && model.equals(car.model) && color == car.color;
+                registerNumber == car.registerNumber && mark.equals(car.mark) && model.equals(car.model) && color.equals(car.color);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, mark, model, yearOfProduction, color, price, registerNumber);
     }
-
 }
