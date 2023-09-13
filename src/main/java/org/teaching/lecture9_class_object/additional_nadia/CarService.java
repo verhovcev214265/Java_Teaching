@@ -1,7 +1,6 @@
 package org.teaching.lecture9_class_object.additional_nadia;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CarService {
@@ -16,8 +15,13 @@ public class CarService {
     }
 
     // a) список марок автомобилей из созданного массива объектов;
-    public List<Car> allCars() {
-        return Arrays.asList(cars);
+    public List<String> allCars() {
+        List<String> result = new ArrayList<>();
+
+        for (Car car : cars) {
+            result.add(car.getMark());
+        }
+        return result;
     }
 
     // b) список автомобилей, которые эксплуатируются больше n лет;

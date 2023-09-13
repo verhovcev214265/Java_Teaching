@@ -48,7 +48,7 @@ public class Main {
 
                 switch (action) {
                     case "1":
-                        List<Car> allCars = carService.allCars();
+                        List<String> allCars = carService.allCars();
                         logger.info(allCars.toString());
                         break;
                     case "2":
