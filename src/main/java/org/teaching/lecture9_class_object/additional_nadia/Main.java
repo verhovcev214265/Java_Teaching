@@ -73,7 +73,7 @@ public class Main {
                         );
                         break;
                     default:
-                        logger.info("Bye - bye");
+                        logger.info("Bye - bye!");
                         exit = true;
                         break;
                 }
