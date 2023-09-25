@@ -18,6 +18,4 @@ public class GenericTest {
         String expected = "Hello";
         Assert.assertEquals(expected.getClass(), generic.show());
     }
-
-
 }
