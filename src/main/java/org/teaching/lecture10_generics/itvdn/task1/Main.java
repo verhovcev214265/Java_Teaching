@@ -6,6 +6,5 @@ public class Main {
         MyClass.factoryMethod(("Hello"));
         MyClass.factoryMethod(20.5);
         MyClass.factoryMethod(21.5f);
-
     }
 }

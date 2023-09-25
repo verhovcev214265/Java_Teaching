@@ -10,9 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class MyClass<T> {
-    private static final Logger logger = LoggerFactory.getLogger(MyClass.class);
+    protected static Logger logger = LoggerFactory.getLogger(MyClass.class);
 
     public static <T> void factoryMethod(T instance){
         logger.info(instance.toString());
     }
+
+
 }

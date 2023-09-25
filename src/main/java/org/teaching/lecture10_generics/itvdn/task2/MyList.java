@@ -8,5 +8,42 @@ package org.teaching.lecture10_generics.itvdn.task2;
 элементов.
  */
 
+import java.util.Arrays;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class MyList<T> {
+    private static final Logger logger = LoggerFactory.getLogger(MyList.class);
+    private Object[] elements;
+    private int size;
+
+    public MyList() {
+        elements = new Object[10];
+        size = 0;
+    }
+
+    public void add(T element) {
+        if (size == elements.length) {
+            elements = Arrays.copyOf(elements, (size * 3) / 2);
+        }
+        elements[size] = element;
+        size++;
+    }
+
+    public T getIndex(int index) {
+        if (index < 0 || index >= size) {
+            logger.error("This array has just: {} indexes.\n" +
+                    " but you had tried to call a: {}", elements.length - 1, index);
+            throw new IndexOutOfBoundsException("This array has just: " + (elements.length - 1) + "indexes.\n" +
+                    " but you had tried to call a: " + index);
+        }
+        @SuppressWarnings("unchecked")
+        T item = (T) elements[index];
+        return item;
+    }
+
+    public int getSize(){
+        return size;
+    }
 }
