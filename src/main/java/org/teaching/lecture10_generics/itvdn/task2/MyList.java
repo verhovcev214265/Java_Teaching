@@ -18,8 +18,8 @@ public class MyList<T> {
     private Object[] elements;
     private int size;
 
-    public MyList() {
-        elements = new Object[10];
+    public MyList(int length) {
+        elements = new Object[length];
         size = 0;
     }
 
@@ -46,4 +46,9 @@ public class MyList<T> {
     public int getSize(){
         return size;
     }
+
+    public Object[] getElements(){
+        return elements;
+    }
+
 }
