@@ -25,7 +25,7 @@ public class MyList<T> {
 
     public void add(T element) {
         if (size == elements.length) {
-            elements = Arrays.copyOf(elements, (size * 3) / 2);
+            elements = Arrays.copyOf(elements, size * 2);
         }
         elements[size] = element;
         size++;
