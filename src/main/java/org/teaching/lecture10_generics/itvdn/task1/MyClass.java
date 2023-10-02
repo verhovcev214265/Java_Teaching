@@ -13,10 +13,13 @@ public class MyClass<T> {
     protected static Logger logger = LoggerFactory.getLogger(MyClass.class);
 
     public static <T> T factoryMethod(Class<T> klass){
-        try{
+        if (klass == Integer.class){
+            return (T) Integer.valueOf(0);
+        }
+        try {
             return klass.newInstance();
         }catch (InstantiationException | IllegalAccessException e){
-            logger.error("Can't instantiate new object!");
+            logger.error("Can't instantiate new object");
             return null;
         }
     }

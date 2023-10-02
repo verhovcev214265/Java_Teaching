@@ -1,31 +1,30 @@
 package org.teaching.lecture10_generics.itvdn.task1;
 
+
 import org.junit.Test;
-import org.mockito.Mockito;
-import org.slf4j.Logger;
 import org.junit.Assert;
+
 
 public class MyClassTest {
 
     @Test
-    public void factoryMethod_test(){
-        String instanceStr = "Hello";
-        Double instanceDouble = 23.17;
-
-        Logger loggerMock = Mockito.mock(Logger.class);
-        MyClass.logger = loggerMock;
-        String str = MyClass.factoryMethod(String.class);
-        Logger logger = MyClass.factoryMethod(Logger.class);
-
-        Mockito.verify(loggerMock).info(instanceStr);
-        Mockito.verify(loggerMock).info(String.valueOf(instanceDouble));
+    public void factoryMethod_forString_test() {
+        String string = MyClass.factoryMethod(String.class);
+        Assert.assertNotNull(string);
+        Assert.assertTrue(string instanceof String);
     }
 
     @Test
-    public void factoryMethod_forString_test(){
-        String str = MyClass.factoryMethod(String.class);
-        Assert.assertNotNull(str);
-        Assert.assertTrue(str instanceof String);
+    public void factoryMethod_forClasTest_test(){
+        ClassTest classTest = MyClass.factoryMethod(ClassTest.class);
+        Assert.assertNotNull(classTest);
+        Assert.assertTrue(classTest instanceof ClassTest);
     }
 
+    @Test
+    public void factoryMethod_forInteger_test(){
+        Integer integer = MyClass.factoryMethod(Integer.class);
+        Assert.assertNotNull(integer);
+        Assert.assertTrue(integer instanceof Integer);
+    }
 }
