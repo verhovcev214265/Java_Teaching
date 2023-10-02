@@ -17,17 +17,18 @@ public class MyListTest {
 
     @Before
     public void setUp(){
-        myListStr = new MyList<>(3);
-        expectedStr = Arrays.asList("Hello", "my", "world!");
+        myListStr = new MyList<>(4);
+        expectedStr = Arrays.asList("Hello", "my", "beautiful", "world!");
 
-        myListInt = new MyList<>(3);
-        expectedInt = Arrays.asList(44, 43, 22);
+        myListInt = new MyList<>(4);
+        expectedInt = Arrays.asList(44, 43, 22, 55);
     }
 
     @Test
     public void add_test_Strings(){
         myListStr.add("Hello");
         myListStr.add("my");
+        myListStr.add("beautiful");
         myListStr.add("world!");
 
         for (int i = 0; i < myListStr.getElements().length; i++) {
@@ -40,6 +41,7 @@ public class MyListTest {
         myListInt.add(44);
         myListInt.add(43);
         myListInt.add(22);
+        myListInt.add(55);
 
         for (int i = 0; i < myListInt.getElements().length; i++) {
             Assert.assertEquals(myListInt.getElements()[i], expectedInt.get(i));

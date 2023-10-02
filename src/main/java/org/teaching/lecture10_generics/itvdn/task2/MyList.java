@@ -13,13 +13,16 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@SuppressWarnings("unchecked")
 public class MyList<T> {
     private static final Logger logger = LoggerFactory.getLogger(MyList.class);
-    private Object[] elements;
-    private int size;
+    private static final int INITIAL_CAPACITY = 4;
+    private int lastElement = 0;
+    private T[] elements;
+    private int size = lastElement + 1;
 
     public MyList(int length) {
-        elements = new Object[length];
+        elements = (T[]) new Object[INITIAL_CAPACITY];
         size = 0;
     }
 
@@ -38,7 +41,7 @@ public class MyList<T> {
             throw new IndexOutOfBoundsException("This array has just: " + (elements.length - 1) + "indexes.\n" +
                     " but you had tried to call a: " + index);
         }
-        @SuppressWarnings("unchecked")
+
         T item = (T) elements[index];
         return item;
     }
