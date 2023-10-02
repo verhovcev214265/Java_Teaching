@@ -17,9 +17,9 @@ import org.slf4j.LoggerFactory;
 public class MyList<T> {
     private static final Logger logger = LoggerFactory.getLogger(MyList.class);
     private static final int INITIAL_CAPACITY = 4;
-    private int lastElement = 0;
+    private final int lastElement = 0;
     private T[] elements;
-    private int size = lastElement + 1;
+    private int size;
 
     public MyList(int length) {
         elements = (T[]) new Object[INITIAL_CAPACITY];
