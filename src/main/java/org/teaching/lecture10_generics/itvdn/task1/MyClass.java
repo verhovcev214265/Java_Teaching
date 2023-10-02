@@ -12,9 +12,12 @@ import org.slf4j.LoggerFactory;
 public class MyClass<T> {
     protected static Logger logger = LoggerFactory.getLogger(MyClass.class);
 
-    public static <T> void factoryMethod(T instance){
-        logger.info(instance.toString());
+    public static <T> T factoryMethod(Class<T> klass){
+        try{
+            return klass.newInstance();
+        }catch (InstantiationException | IllegalAccessException e){
+            logger.error("Can't instantiate new object!");
+            return null;
+        }
     }
-
-
 }

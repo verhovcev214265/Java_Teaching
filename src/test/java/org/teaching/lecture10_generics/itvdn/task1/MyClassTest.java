@@ -1,9 +1,9 @@
 package org.teaching.lecture10_generics.itvdn.task1;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.slf4j.Logger;
+import org.junit.Assert;
 
 public class MyClassTest {
 
@@ -14,22 +14,18 @@ public class MyClassTest {
 
         Logger loggerMock = Mockito.mock(Logger.class);
         MyClass.logger = loggerMock;
-        MyClass.factoryMethod(instanceStr);
-        MyClass.factoryMethod(instanceDouble);
+        String str = MyClass.factoryMethod(String.class);
+        Logger logger = MyClass.factoryMethod(Logger.class);
 
         Mockito.verify(loggerMock).info(instanceStr);
         Mockito.verify(loggerMock).info(String.valueOf(instanceDouble));
     }
 
     @Test
-    @Ignore
-    public void factoryMethod_by_Null_test(){
-        String instance = null;
-
-        Logger loggerMock = Mockito.mock(Logger.class);
-        MyClass.logger = loggerMock;
-        MyClass.factoryMethod(instance);
-
-        Mockito.verify(loggerMock).info(instance);
+    public void factoryMethod_forString_test(){
+        String str = MyClass.factoryMethod(String.class);
+        Assert.assertNotNull(str);
+        Assert.assertTrue(str instanceof String);
     }
+
 }
