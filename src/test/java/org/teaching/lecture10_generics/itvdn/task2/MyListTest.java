@@ -17,10 +17,10 @@ public class MyListTest {
 
     @Before
     public void setUp(){
-        myListStr = new MyList<>(4);
+        myListStr = new MyList<>();
         expectedStr = Arrays.asList("Hello", "my", "beautiful", "world!");
 
-        myListInt = new MyList<>(4);
+        myListInt = new MyList<>();
         expectedInt = Arrays.asList(44, 43, 22, 55);
     }
 
@@ -31,8 +31,8 @@ public class MyListTest {
         myListStr.add("beautiful");
         myListStr.add("world!");
 
-        for (int i = 0; i < myListStr.getElements().length; i++) {
-            Assert.assertEquals(myListStr.getElements()[i], expectedStr.get(i));
+        for (int i = 0; i < myListStr.getSize(); i++) {
+            Assert.assertEquals(myListStr.getElement(i), expectedStr.get(i));
         }
     }
 
@@ -43,14 +43,14 @@ public class MyListTest {
         myListInt.add(22);
         myListInt.add(55);
 
-        for (int i = 0; i < myListInt.getElements().length; i++) {
-            Assert.assertEquals(myListInt.getElements()[i], expectedInt.get(i));
+        for (int i = 0; i < myListInt.getSize(); i++) {
+            Assert.assertEquals(myListInt.getElement(i), expectedInt.get(i));
         }
     }
 
     @Test
     public void checkMagnificationArray(){
-        MyList<Integer> instance = new MyList<>(4);
+        MyList<Integer> instance = new MyList<>();
         instance.add(1);
         instance.add(2);
         instance.add(3);
@@ -63,35 +63,35 @@ public class MyListTest {
 
     @Test
     public void get_test(){
-        MyList<String> instance = new MyList<>(2);
+        MyList<String> instance = new MyList<>();
         instance.add("Hello");
         instance.add("World!");
 
-        Assert.assertEquals("Hello", instance.getIndex(0));
-        Assert.assertEquals("World!", instance.getIndex(1));
+        Assert.assertEquals("Hello", instance.getElement(0));
+        Assert.assertEquals("World!", instance.getElement(1));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void shouldReturn_ExceptionMessage_When_InputHasNegativeArgument(){
-        MyList<Integer> instance = new MyList<>(2);
+        MyList<Integer> instance = new MyList<>();
         instance.add(1);
         instance.add(2);
 
-        instance.getIndex(-1);
+        instance.getElement(-1);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void shouldReturn_ExceptionMessage_When_InputHasBiggerNumber_Than_ArrayLength(){
-        MyList<Integer> instance = new MyList<>(2);
+        MyList<Integer> instance = new MyList<>();
         instance.add(1);
         instance.add(2);
 
-        instance.getIndex(2);
+        instance.getElement(2);
     }
 
     @Test
     public void checkGetSize(){
-        MyList<String> instance = new MyList<>(2);
+        MyList<String> instance = new MyList<>();
         instance.add("Hello");
         instance.add("my");
         instance.add("beautiful");

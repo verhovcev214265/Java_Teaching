@@ -17,11 +17,10 @@ import org.slf4j.LoggerFactory;
 public class MyList<T> {
     private static final Logger logger = LoggerFactory.getLogger(MyList.class);
     private static final int INITIAL_CAPACITY = 4;
-    private final int lastElement = 0;
     private T[] elements;
     private int size;
 
-    public MyList(int length) {
+    public MyList() {
         elements = (T[]) new Object[INITIAL_CAPACITY];
         size = 0;
     }
@@ -34,7 +33,7 @@ public class MyList<T> {
         size++;
     }
 
-    public T getIndex(int index) {
+    public T getElement(int index) {
         if (index < 0 || index >= size) {
             logger.error("This array has just: {} indexes.\n" +
                     " but you had tried to call a: {}", elements.length - 1, index);
@@ -49,9 +48,4 @@ public class MyList<T> {
     public int getSize(){
         return size;
     }
-
-    public Object[] getElements(){
-        return elements;
-    }
-
 }

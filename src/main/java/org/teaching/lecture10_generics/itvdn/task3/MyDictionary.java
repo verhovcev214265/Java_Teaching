@@ -15,44 +15,53 @@ import org.slf4j.LoggerFactory;
 public class MyDictionary<Key, Value> {
     private static final Logger logger = LoggerFactory.getLogger(MyDictionary.class);
     private static final int INITIAL_CAPACITY = 4;
-    private final int lastElement = 0;
-    private Key[] keys;
-    private Value[] values;
+    private Pair<Key, Value>[] pairs;
     private int size;
 
+    public static class Pair<Key, Value> {
+        private Key key;
+        private Value value;
+
+        public Pair(Key key, Value value){
+            this.key = key;
+            this.value = value;
+        }
+
+        public Key getKey(){
+            return key;
+        }
+
+        public Value getValue(){
+            return value;
+        }
+    }
+
     public MyDictionary(int length){
-        keys = (Key[]) new Object[INITIAL_CAPACITY];
-        values = (Value[]) new Object[INITIAL_CAPACITY];
+        pairs = new Pair[INITIAL_CAPACITY];
         size = 0;
     }
 
-    public void addKey(Key element){
-        if (size == keys.length){
-            keys = Arrays.copyOf(keys, size * 2);
+    public void addElement(Key key, Value value){
+        if (size == pairs.length){
+            pairs = Arrays.copyOf(pairs, size * 2);
         }
-        keys[size] = element;
+        pairs[size] = new Pair<>(key, value);
         size++;
     }
 
-    public void addValue(Value element){
-        if (size == values.length){
-            values = Arrays.copyOf(values, size * 2);
-        }
-        values[size] = element;
-        size++;
-    }
-
-    public Key getIndexKey(int index){
+    public Pair<Key, Value> getElement(int index){
         if (index < 0 || index >= size){
             logger.error("This array has just: {} indexes.\n" +
-                    "but you you had tried call a: {}", keys.length - 1, index);
-            throw new IndexOutOfBoundsException("This array has just: " + (keys.length - 1) + "indexes.\n" +
-                    " but yiu had tried call a: " + index);
+                    "but you you had tried call a: {}", pairs.length - 1, index);
+            throw new IndexOutOfBoundsException("This array has just: " + (pairs.length - 1) + "indexes.\n" +
+                    " but you had tried call a: " + index);
         }
 
-        Key item = (Key) keys[index];
-        return item;
+        return pairs[index];
     }
 
+    public int getSize(){
+        return size;
+    }
 
 }
