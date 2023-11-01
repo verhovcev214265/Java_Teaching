@@ -7,6 +7,7 @@ package org.teaching.lecture10_generics.itvdn.task3;
 указанному индексу и свойство только для чтения для получения общего количества пар элементов.
  */
 import java.util.Arrays;
+import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +40,20 @@ public class MyDictionary<Key, Value> {
         public String toString() {
             return "Pair: " + "key = " + key + ", value = " + value + ".";
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Pair<?, ?> pair = (Pair<?, ?>) o;
+            return Objects.equals(key, pair.key) && Objects.equals(value, pair.value);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(key, value);
+        }
+
     }
 
     public MyDictionary(){
@@ -68,4 +83,5 @@ public class MyDictionary<Key, Value> {
     public int getSize(){
         return size;
     }
+
 }
