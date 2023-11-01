@@ -4,25 +4,32 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class MyDictionaryTest {
 
     private MyDictionary<String, String> myDictionary;
-    private List<String> expectedKey;
-    private List<String> expectedValue;
-
+    private MyDictionary<String, String> expected;
 
     @Before
     public void setUp(){
-        myDictionary = new MyDictionary<>(6);
-        expectedKey = Arrays.asList("країна", "місто", "street");
-        expectedValue = Arrays.asList("country", "city", "street");
+        myDictionary = new MyDictionary<>();
+
+        expected = new MyDictionary<>();
+        expected.addElement("країна", "country");
+        expected.addElement("область", "district");
+        expected.addElement("місто", "city");
+        expected.addElement("вулиця", "street");
+
     }
 
     @Test
     public void add_test(){
+        myDictionary.addElement("країна", "country");
+        myDictionary.addElement("область", "district");
+        myDictionary.addElement("місто", "city");
+        myDictionary.addElement("вулиця", "street");
 
+        for (int i = 0; i < myDictionary.getSize(); i++) {
+            Assert.assertEquals(expected.getElement(i), myDictionary.getElement(i));
+        }
     }
 }

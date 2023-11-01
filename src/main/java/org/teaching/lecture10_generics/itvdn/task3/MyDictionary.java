@@ -19,8 +19,8 @@ public class MyDictionary<Key, Value> {
     private int size;
 
     public static class Pair<Key, Value> {
-        private Key key;
-        private Value value;
+        private final Key key;
+        private final Value value;
 
         public Pair(Key key, Value value){
             this.key = key;
@@ -34,9 +34,14 @@ public class MyDictionary<Key, Value> {
         public Value getValue(){
             return value;
         }
+
+        @Override
+        public String toString() {
+            return "Pair: " + "key = " + key + ", value = " + value + ".";
+        }
     }
 
-    public MyDictionary(int length){
+    public MyDictionary(){
         pairs = new Pair[INITIAL_CAPACITY];
         size = 0;
     }
@@ -53,7 +58,7 @@ public class MyDictionary<Key, Value> {
         if (index < 0 || index >= size){
             logger.error("This array has just: {} indexes.\n" +
                     "but you you had tried call a: {}", pairs.length - 1, index);
-            throw new IndexOutOfBoundsException("This array has just: " + (pairs.length - 1) + "indexes.\n" +
+            throw new IndexOutOfBoundsException("This array has just: " + (pairs.length - 1) + "indexes." +
                     " but you had tried call a: " + index);
         }
 
@@ -63,5 +68,4 @@ public class MyDictionary<Key, Value> {
     public int getSize(){
         return size;
     }
-
 }
