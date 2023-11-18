@@ -47,7 +47,5 @@ public class Main {
 
         Arrays.sort(arrayOfProducts, new SortByPrice());
         for (Product product : arrayOfProducts) System.out.println(product);
-
-
     }
 }

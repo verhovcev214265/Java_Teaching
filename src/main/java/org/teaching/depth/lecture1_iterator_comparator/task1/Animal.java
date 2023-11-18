@@ -42,18 +42,15 @@ public class Animal implements Comparable<Animal>{
     }
 
     public int compareTo(Animal other) {
-        int tmp = this.speed - other.speed;
+        int dif = this.speed - other.speed;
+        if(dif != 0) return dif;
 
-        if (tmp == 0) {
-            tmp = this.price - other.price;
-            if (tmp == 0){
-                tmp = this.breed.compareTo(other.breed);
-                if (tmp == 0){
-                    tmp = this.weight - other.weight;
-                }
-            }
-        }
-        return tmp;
+        dif = this.price - other.price;
+        if(dif != 0) return dif;
+
+        dif = this.breed.compareTo(other.breed);
+        if (dif != 0) return dif;
+
+        return this.weight - other.weight;
     }
-
 }
